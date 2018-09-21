@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HTH</string>
+    <string name="countries_title">Choose country to attack or heal</string>
+    <string name="search">Search</string>
+    <string name="loading">Loading…</string>
+    <string name="heal">Heal</string>
+    <string name="attack">Attack</string>
+    <string name="country_title">Choose your action</string>
+    <string name="search_title">Search</string>
+</resources>
