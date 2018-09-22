@@ -7,4 +7,5 @@
     <string name="attack">Attack</string>
     <string name="country_title">Choose your action</string>
     <string name="search_title">Search</string>
+    <string name="population">Population: %s</string>
 </resources>

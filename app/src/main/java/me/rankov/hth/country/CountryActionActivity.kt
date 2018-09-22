@@ -13,6 +13,7 @@ import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
 import me.rankov.hth.me.rankov.hth.country.CountryActionPresenter
+import java.text.NumberFormat
 
 
 class CountryActionActivity : AppCompatActivity(), CountryActionView {
@@ -21,7 +22,9 @@ class CountryActionActivity : AppCompatActivity(), CountryActionView {
 
     override fun setCountry(country: Country) {
         supportPostponeEnterTransition()
-        title = country.name
+        name.text = country.name
+        val populationString = NumberFormat.getNumberInstance().format(country.population)
+        population.text = String.format(getString(R.string.population), populationString)
         flag.transitionName = intent.getStringExtra(EXTRA_COUNTRY_TRANSITION_NAME)
         GlideApp.with(this).load(country.flag)
                 .listener(object : RequestListener<Drawable> {
@@ -51,6 +54,7 @@ class CountryActionActivity : AppCompatActivity(), CountryActionView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country_action)
         setSupportActionBar(toolbar)
+        title = getString(R.string.country_title)
         country = intent.getParcelableExtra(EXTRA_COUNTRY)
         presenter = CountryActionPresenter(this, CountryActionInteractor(), country)
         presenter.onCreate()
