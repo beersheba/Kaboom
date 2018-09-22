@@ -1,12 +1,12 @@
 package me.rankov.hth.me.rankov.hth.country
 
 import me.rankov.hth.country.Country
-import me.rankov.hth.country.CountryActionInteractor
-import me.rankov.hth.country.CountryActionView
+import me.rankov.hth.country.CountryDetailsInteractor
+import me.rankov.hth.country.CountryDetailsView
 
-class CountryActionPresenter(var countryView: CountryActionView?,
-                             val countryActionInteractor: CountryActionInteractor,
-                             val country: Country) {
+class CountryDetailsPresenter(var countryView: CountryDetailsView?,
+                              val countryDetailsInteractor: CountryDetailsInteractor,
+                              val country: Country) {
 
     fun onCreate() {
         countryView?.setCountry(country)

@@ -7,18 +7,18 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import kotlinx.android.synthetic.main.activity_country_action.*
+import kotlinx.android.synthetic.main.activity_country_details.*
 import me.rankov.hth.EXTRA_COUNTRY
 import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
-import me.rankov.hth.me.rankov.hth.country.CountryActionPresenter
+import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenter
 import java.text.NumberFormat
 
 
-class CountryActionActivity : AppCompatActivity(), CountryActionView {
+class CountryDetailsActivity : AppCompatActivity(), CountryDetailsView {
     private lateinit var country: Country
-    private lateinit var presenter: CountryActionPresenter
+    private lateinit var presenter: CountryDetailsPresenter
 
     override fun setCountry(country: Country) {
         supportPostponeEnterTransition()
@@ -52,11 +52,11 @@ class CountryActionActivity : AppCompatActivity(), CountryActionView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_country_action)
+        setContentView(R.layout.activity_country_details)
         setSupportActionBar(toolbar)
         title = getString(R.string.country_title)
         country = intent.getParcelableExtra(EXTRA_COUNTRY)
-        presenter = CountryActionPresenter(this, CountryActionInteractor(), country)
+        presenter = CountryDetailsPresenter(this, CountryDetailsInteractor(), country)
         presenter.onCreate()
 
     }

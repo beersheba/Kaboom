@@ -18,7 +18,7 @@ class CountriesListActivity : AppCompatActivity(), CountriesListView {
     private val presenter = CountriesListPresenter(this, CountriesListLoadInteractor())
 
     override fun navigateToCountry(country: Country, imageView: ImageView) {
-        val intent = Intent(this, CountryActionActivity::class.java)
+        val intent = Intent(this, CountryDetailsActivity::class.java)
         intent.apply {
             putExtra(EXTRA_COUNTRY, country)
             putExtra(EXTRA_COUNTRY_TRANSITION_NAME, getTransitionName(imageView))

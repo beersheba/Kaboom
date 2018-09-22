@@ -1,5 +1,5 @@
 package me.rankov.hth.country
 
-class CountryActionInteractor {
+class CountryDetailsInteractor {
 
 }
