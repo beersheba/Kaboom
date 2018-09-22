@@ -10,8 +10,12 @@ class CountriesListPresenter(var countriesListView: CountriesListView?, val load
     }
 
     fun onCountriesLoaded(countries: List<Country>) {
-        countriesListView?.setCountries(countries)
+        countriesListView?.setCountries(sortCountriesByPopulation(countries))
         countriesListView?.hideProgress()
+    }
+
+    private fun sortCountriesByPopulation(countries: List<Country>): List<Country> {
+        return countries.sortedWith(compareByDescending {it.population})
     }
 
     fun onCountryClicked(country: Country, imageView: ImageView) {
