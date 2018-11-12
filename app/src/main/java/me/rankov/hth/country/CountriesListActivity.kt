@@ -25,7 +25,7 @@ class CountriesListActivity : AppCompatActivity(), CountriesListView {
         }
 
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this, imageView, getTransitionName(imageView))
+                this, imageView, getTransitionName(imageView).toString())
         startActivity(intent, options.toBundle())
     }
 
