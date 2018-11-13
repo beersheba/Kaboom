@@ -42,6 +42,7 @@ dependencies {
         exclude module: 'okhttp'
     }
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.instabug.library:instabug:8.0.11'
 }
 repositories {
     mavenCentral()
