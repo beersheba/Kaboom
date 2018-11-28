@@ -1,4 +1,4 @@
-package me.rankov.hth.country
+package me.rankov.hth
 
 import android.app.Application
 import com.instabug.library.Instabug

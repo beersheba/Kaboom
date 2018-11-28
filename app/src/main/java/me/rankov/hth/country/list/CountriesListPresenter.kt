@@ -1,6 +1,7 @@
-package me.rankov.hth.country
+package me.rankov.hth.country.list
 
 import android.widget.ImageView
+import me.rankov.hth.country.Country
 
 class CountriesListPresenter(var countriesListView: CountriesListView?, val loadCountriesInteractor: CountriesListLoadInteractor) {
 
@@ -10,7 +11,8 @@ class CountriesListPresenter(var countriesListView: CountriesListView?, val load
     }
 
     fun onCountriesLoaded(countries: List<Country>) {
-        countriesListView?.setCountries(sortCountriesByPopulation(countries))
+        val countriesByPopulation = sortCountriesByPopulation(countries)
+        countriesListView?.setCountries(countriesByPopulation)
         countriesListView?.hideProgress()
     }
 
