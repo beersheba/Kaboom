@@ -1,6 +1,6 @@
 package me.rankov.hth.country.details
 
-import me.rankov.hth.country.Country
+import me.rankov.hth.model.Country
 
 interface CountryDetailsPresenter {
     fun onCreate()

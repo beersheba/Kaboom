@@ -1,7 +1,6 @@
-package me.rankov.hth.country.list
+package me.rankov.hth.model
 
 import me.rankov.hth.BuildConfig
-import me.rankov.hth.country.Country
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

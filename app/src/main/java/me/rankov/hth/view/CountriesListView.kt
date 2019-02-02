@@ -1,7 +1,7 @@
-package me.rankov.hth.country.list
+package me.rankov.hth.view
 
 import android.widget.ImageView
-import me.rankov.hth.country.Country
+import me.rankov.hth.model.Country
 
 interface CountriesListView {
     fun hideProgress()

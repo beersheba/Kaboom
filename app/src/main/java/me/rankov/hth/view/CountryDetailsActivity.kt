@@ -13,6 +13,7 @@ import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
 import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenterImpl
+import me.rankov.hth.model.Country
 import java.text.NumberFormat
 
 

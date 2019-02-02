@@ -1,4 +1,4 @@
-package me.rankov.hth.country.list
+package me.rankov.hth.presenter
 
 import android.content.Context
 import android.support.v4.view.ViewCompat.setTransitionName
@@ -11,7 +11,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.view_country_item.view.*
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
-import me.rankov.hth.country.Country
+import me.rankov.hth.model.Country
 
 
 class CountriesListItemAdapter(private val context: Context,
