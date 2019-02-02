@@ -12,13 +12,13 @@ import me.rankov.hth.EXTRA_COUNTRY
 import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
-import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenter
+import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenterImpl
 import java.text.NumberFormat
 
 
 class CountryDetailsActivity : AppCompatActivity(), CountryDetailsView {
     private lateinit var country: Country
-    private lateinit var presenter: CountryDetailsPresenter
+    private lateinit var presenter: CountryDetailsPresenterImpl
 
     override fun setCountry(country: Country) {
         supportPostponeEnterTransition()
@@ -56,7 +56,7 @@ class CountryDetailsActivity : AppCompatActivity(), CountryDetailsView {
         setSupportActionBar(toolbar)
         title = getString(R.string.country_title)
         country = intent.getParcelableExtra(EXTRA_COUNTRY)
-        presenter = CountryDetailsPresenter(this, CountryDetailsInteractor(), country)
+        presenter = CountryDetailsPresenterImpl(this, CountryDetailsInteractor(), country)
         presenter.onCreate()
 
     }
