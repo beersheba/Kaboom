@@ -2,9 +2,11 @@ package me.rankov.hth.country.list
 
 import android.widget.ImageView
 import me.rankov.hth.country.Country
+import me.rankov.hth.country.list.CountriesListContract.Presenter
+import me.rankov.hth.country.list.CountriesListContract.View
 
-class CountriesListPresenterImpl(var countriesListView: CountriesListView?,
-                                 val loadCountriesInteractor: CountriesListLoadInteractor) : CountriesListPresenter {
+class CountriesListPresenterImpl(var countriesListView: View?,
+                                 val loadCountriesInteractor: CountriesListLoadInteractor) : Presenter {
 
     override fun onCreate() {
         countriesListView?.showProgress()

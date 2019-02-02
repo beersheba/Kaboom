@@ -12,11 +12,12 @@ import me.rankov.hth.EXTRA_COUNTRY
 import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.GlideApp
 import me.rankov.hth.R
+import me.rankov.hth.country.details.CountryDetailsContract.View
 import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenterImpl
 import java.text.NumberFormat
 
 
-class CountryDetailsActivity : AppCompatActivity(), CountryDetailsView {
+class CountryDetailsActivity : AppCompatActivity(), View {
     private lateinit var country: Country
     private lateinit var presenter: CountryDetailsPresenterImpl
 

@@ -16,7 +16,7 @@ import me.rankov.hth.country.Country
 import me.rankov.hth.country.CountryDetailsActivity
 import org.jetbrains.anko.toast
 
-class CountriesListActivity : AppCompatActivity(), CountriesListView {
+class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
     private val presenter = CountriesListPresenterImpl(this, CountriesListLoadInteractor())
 
     override fun navigateToCountry(country: Country, imageView: ImageView) {
