@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.CountriesListActivity"
+            android:name=".country.list.CountriesListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar.DefaultActivity">
             <intent-filter>

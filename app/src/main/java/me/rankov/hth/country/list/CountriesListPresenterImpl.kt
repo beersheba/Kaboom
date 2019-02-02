@@ -1,9 +1,7 @@
-package me.rankov.hth.presenter
+package me.rankov.hth.country.list
 
 import android.widget.ImageView
-import me.rankov.hth.model.CountriesListLoadInteractor
-import me.rankov.hth.view.CountriesListView
-import me.rankov.hth.model.Country
+import me.rankov.hth.country.Country
 
 class CountriesListPresenterImpl(var countriesListView: CountriesListView?,
                                  val loadCountriesInteractor: CountriesListLoadInteractor) : CountriesListPresenter {

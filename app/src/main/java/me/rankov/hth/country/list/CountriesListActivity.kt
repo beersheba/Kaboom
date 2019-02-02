@@ -1,4 +1,4 @@
-package me.rankov.hth.view
+package me.rankov.hth.country.list
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,11 +12,8 @@ import kotlinx.android.synthetic.main.activity_countries_list.*
 import me.rankov.hth.EXTRA_COUNTRY
 import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.hth.R
-import me.rankov.hth.model.Country
+import me.rankov.hth.country.Country
 import me.rankov.hth.country.CountryDetailsActivity
-import me.rankov.hth.presenter.CountriesListItemAdapter
-import me.rankov.hth.model.CountriesListLoadInteractor
-import me.rankov.hth.presenter.CountriesListPresenterImpl
 import org.jetbrains.anko.toast
 
 class CountriesListActivity : AppCompatActivity(), CountriesListView {

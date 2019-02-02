@@ -1,4 +1,4 @@
-package me.rankov.hth.model
+package me.rankov.hth.country
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

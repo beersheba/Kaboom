@@ -1,6 +1,6 @@
 package me.rankov.hth.me.rankov.hth.country
 
-import me.rankov.hth.model.Country
+import me.rankov.hth.country.Country
 import me.rankov.hth.country.CountryDetailsInteractor
 import me.rankov.hth.country.CountryDetailsView
 import me.rankov.hth.country.details.CountryDetailsPresenter
