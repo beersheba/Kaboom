@@ -1,4 +1,4 @@
-package me.rankov.hth;
+package me.rankov.kaboom;
 
 import org.junit.Test;
 

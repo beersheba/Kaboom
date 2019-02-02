@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HTH</string>
+    <string name="app_name">Kaboom!</string>
     <string name="countries_title">Choose country to attack or heal</string>
     <string name="search">Search</string>
     <string name="loading">Loading…</string>

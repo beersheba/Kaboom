@@ -1,4 +1,4 @@
-package me.rankov.hth.country
+package me.rankov.kaboom.country_select
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -8,12 +8,12 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_country_details.*
-import me.rankov.hth.EXTRA_COUNTRY
-import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
-import me.rankov.hth.GlideApp
-import me.rankov.hth.R
-import me.rankov.hth.country.details.CountryDetailsContract.View
-import me.rankov.hth.me.rankov.hth.country.CountryDetailsPresenterImpl
+import me.rankov.kaboom.EXTRA_COUNTRY
+import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
+import me.rankov.kaboom.GlideApp
+import me.rankov.kaboom.R
+import me.rankov.kaboom.country_select.details.CountryDetailsContract.View
+import me.rankov.kaboom.country_select.details.CountryDetailsPresenterImpl
 import java.text.NumberFormat
 
 

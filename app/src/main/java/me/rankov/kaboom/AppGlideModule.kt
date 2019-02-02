@@ -1,4 +1,4 @@
-package me.rankov.hth
+package me.rankov.kaboom
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule

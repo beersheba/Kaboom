@@ -1,4 +1,4 @@
-package me.rankov.hth.country.list
+package me.rankov.kaboom.country_select.list
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_countries_list.*
-import me.rankov.hth.EXTRA_COUNTRY
-import me.rankov.hth.EXTRA_COUNTRY_TRANSITION_NAME
-import me.rankov.hth.R
-import me.rankov.hth.country.Country
-import me.rankov.hth.country.CountryDetailsActivity
+import me.rankov.kaboom.EXTRA_COUNTRY
+import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
+import me.rankov.kaboom.R
+import me.rankov.kaboom.country_select.Country
+import me.rankov.kaboom.country_select.CountryDetailsActivity
 import org.jetbrains.anko.toast
 
 class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
