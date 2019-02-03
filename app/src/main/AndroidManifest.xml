@@ -5,14 +5,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="me.rankov.kaboom.App"
+        android:name=".App"
         android:allowBackup="true"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".login.LoginActivity"></activity>
         <activity
-            android:name="me.rankov.kaboom.country_select.list.CountriesListActivity"
+            android:name=".country_select.list.CountriesListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar.DefaultActivity">
             <intent-filter>
@@ -22,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="me.rankov.kaboom.country_select.CountryDetailsActivity"
+            android:name=".country_select.CountryDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar.DefaultActivity" />
     </application>
 

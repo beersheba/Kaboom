@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "136505228760",
+    "firebase_url": "https://kaboom-1549224923322.firebaseio.com",
+    "project_id": "kaboom-1549224923322",
+    "storage_bucket": "kaboom-1549224923322.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136505228760:android:4c23bca2ca5f9c6d",
+        "android_client_info": {
+          "package_name": "me.rankov.kaboom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136505228760-83qa0r289pg1mda3qe9ctbjgultpq77c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDns6gmRZnJuzV_2g3lIjEUC2-AQhC2r0M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

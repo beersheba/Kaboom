@@ -48,7 +48,13 @@ dependencies {
     }
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.instabug.library:instabug:8.0.11'
+
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
 }
+
 repositories {
     mavenCentral()
 }
@@ -57,3 +63,5 @@ apply plugin: 'kotlin-android-extensions'
 androidExtensions {
     experimental = true
 }
+
+apply plugin: 'com.google.gms.google-services'
