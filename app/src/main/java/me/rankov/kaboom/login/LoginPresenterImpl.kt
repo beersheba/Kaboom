@@ -1,6 +1,5 @@
 package me.rankov.kaboom.login
 
-import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -34,13 +33,13 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         auth = FirebaseAuth.getInstance()
     }
 
-    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account!!, activity)
+                firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
@@ -51,7 +50,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         }
     }
 
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount, activity: Activity) {
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         // [START_EXCLUDE silent]
         //showProgressDialog()
@@ -59,7 +58,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
 
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
-                .addOnCompleteListener(activity) { task ->
+                .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success")
@@ -76,7 +75,6 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
                     //hideProgressDialog()
                     // [END_EXCLUDE]
                 }
-
     }
 
     override fun onStart() {
@@ -93,12 +91,12 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         loginView?.signIn(signInIntent, RC_SIGN_IN)
     }
 
-    override fun onSignOut(activity: Activity) {
+    override fun onSignOut() {
         // Firebase sign out
         auth.signOut()
 
         // Google sign out
-        googleSignInClient.signOut().addOnCompleteListener(activity) {
+        googleSignInClient.signOut().addOnCompleteListener {
             loginView?.updateUI(null)
         }
     }

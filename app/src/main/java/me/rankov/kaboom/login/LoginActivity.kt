@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         signInButton.setOnClickListener { presenter.onSignIn() }
-        signOutButton.setOnClickListener { presenter.onSignOut(this) }
+        signOutButton.setOnClickListener { presenter.onSignOut() }
         presenter.onCreate()
     }
 
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(this, requestCode, resultCode, data)
+        presenter.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun updateUI(user: FirebaseUser?) {
