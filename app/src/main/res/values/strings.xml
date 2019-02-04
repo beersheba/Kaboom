@@ -9,4 +9,6 @@
     <string name="search_title">Search</string>
     <string name="population">Population: %s</string>
     <string name="choose_your_country">Choose your country:</string>
+    <string name="debug_client_id">136505228760-83qa0r289pg1mda3qe9ctbjgultpq77c.apps.googleusercontent.com</string>
+    <string name="sign_out">Sign Out</string>
 </resources>
