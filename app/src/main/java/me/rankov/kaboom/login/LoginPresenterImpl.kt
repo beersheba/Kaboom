@@ -19,7 +19,6 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
     private lateinit var googleSignInClient: GoogleSignInClient
 
     companion object {
-
         private const val RC_SIGN_IN = 9001
     }
 
@@ -63,6 +62,9 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success")
                         val user = auth.currentUser
+                        Log.d(TAG, "" + user?.displayName)
+                        Log.d(TAG, "" + user?.email)
+                        Log.d(TAG, "" + user?.photoUrl.toString())
                         loginView?.updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
