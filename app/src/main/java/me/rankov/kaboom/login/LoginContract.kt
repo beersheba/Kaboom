@@ -6,17 +6,16 @@ import me.rankov.kaboom.BasePresenter
 
 interface LoginContract {
     interface View {
-        fun selectCountry()
-        fun updateUI(user: FirebaseUser?)
         fun signIn(signInIntent: Intent, requestCode: Int)
+        fun updateUI(user: FirebaseUser?)
+        fun navigateToMain()
+        fun navigateToRegister(fragmentId: Int)
     }
 
     interface Presenter : BasePresenter {
         fun onStart()
         fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
-        fun onCountrySelect()
         fun onSignIn()
         fun onSignOut()
     }
-
 }

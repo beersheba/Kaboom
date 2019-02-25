@@ -2,15 +2,18 @@ package me.rankov.kaboom.login
 
 import android.content.Intent
 import com.google.firebase.auth.FirebaseUser
+import me.rankov.kaboom.R
 
 class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor: LoginInteractor) :
         LoginContract.Presenter, LoginInteractor.OnLoginListener {
+
     override fun onSignedOut() {
         loginView?.updateUI(null)
     }
 
     override fun onSuccess(user: FirebaseUser?) {
         loginView?.updateUI(user)
+        checkRegistration()
     }
 
     override fun onFail() {
@@ -28,10 +31,19 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
     override fun onStart() {
         val currentUser = loginInteractor.getUser()
         loginView?.updateUI(currentUser)
+        if (currentUser != null) {
+            checkRegistration()
+        }
     }
 
-    override fun onCountrySelect() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun checkRegistration() {
+        val nickname = loginInteractor.getNickname()
+        val country = loginInteractor.getCountry()
+        when {
+            nickname.isEmpty() -> loginView?.navigateToRegister(R.id.loginNameFragment)
+            country < 0 -> loginView?.navigateToRegister(R.id.loginCountryFragment)
+            else -> loginView?.navigateToMain()
+        }
     }
 
     override fun onSignIn() {

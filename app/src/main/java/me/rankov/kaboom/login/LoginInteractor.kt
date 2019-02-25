@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import me.rankov.kaboom.App
 import me.rankov.kaboom.R
+import me.rankov.kaboom.prefs
 
 class LoginInteractor {
 
@@ -91,7 +92,6 @@ class LoginInteractor {
     }
 
     fun signOut(listener: OnLoginListener) {
-
         // Firebase sign out
         auth.signOut()
 
@@ -100,4 +100,14 @@ class LoginInteractor {
             listener.onSignedOut()
         }
     }
+
+    fun getNickname(): String {
+        return prefs.nickname
+    }
+
+    fun getCountry(): Int {
+        return prefs.country
+    }
+
+
 }
