@@ -9,7 +9,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
 
     override fun onSignedOut() {
         loginView?.updateUI(null)
-        loginView?.navigateToRegister(R.id.loginHomeFragment)
+        loginView?.navigateToHome()
     }
 
     override fun onSuccess(user: FirebaseUser?) {
@@ -41,8 +41,8 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         val nickname = loginInteractor.getNickname()
         val country = loginInteractor.getCountry()
         when {
-            nickname.isEmpty() -> loginView?.navigateToRegister(R.id.loginNameFragment)
-            country < 0 -> loginView?.navigateToRegister(R.id.loginCountryFragment)
+            nickname.isEmpty() -> loginView?.navigateToRegister(R.id.actionHomeToName)
+            country < 0 -> loginView?.navigateToRegister(R.id.actionHomeToCountry)
             else -> loginView?.navigateToMain()
         }
     }

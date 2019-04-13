@@ -4,17 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import androidx.navigation.navOptions
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import me.rankov.kaboom.R
 import org.jetbrains.anko.toast
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
+    override fun navigateToHome() {
+        findNavController(R.id.login_host_fragment).navigate(R.id.loginHomeFragment, null,
+                NavOptions.Builder().setPopUpTo(R.id.login_nav, true).build()
+        )
+    }
 
     override fun navigateToRegister(fragmentId: Int) {
-        findNavController(R.id.login_host_fragment).navigate(fragmentId, null, options)
+        findNavController(R.id.login_host_fragment).navigate(fragmentId)
     }
 
     override fun navigateToMain() {
@@ -22,15 +27,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     private val presenter = LoginPresenterImpl(this, LoginInteractor())
-
-    private val options = navOptions {
-        anim {
-            enter = R.anim.slide_in_right
-            exit = R.anim.slide_out_left
-            popEnter = R.anim.slide_in_left
-            popExit = R.anim.slide_out_right
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

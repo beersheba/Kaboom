@@ -10,6 +10,7 @@ interface LoginContract {
         fun updateUI(user: FirebaseUser?)
         fun navigateToMain()
         fun navigateToRegister(fragmentId: Int)
+        fun navigateToHome()
     }
 
     interface Presenter : BasePresenter {

@@ -8,12 +8,35 @@
         android:id="@+id/loginHomeFragment"
         android:name="me.rankov.kaboom.login.LoginHomeFragment"
         android:label="fragment_login_home"
-        tools:layout="@layout/fragment_login_home" />
+        tools:layout="@layout/fragment_login_home">
+        <action
+            android:id="@+id/actionHomeToName"
+            app:destination="@+id/loginNameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/login_nav"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionHomeToCountry"
+            app:destination="@+id/loginCountryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/login_nav"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/loginNameFragment"
         android:name="me.rankov.kaboom.login.LoginNameFragment"
         android:label="fragment_login_name"
-        tools:layout="@layout/fragment_login_name" />
+        tools:layout="@layout/fragment_login_name">
+        <action
+            android:id="@+id/actionNameToCountry"
+            app:destination="@+id/loginCountryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/login_nav"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/loginCountryFragment"
         android:name="me.rankov.kaboom.login.LoginCountryFragment"

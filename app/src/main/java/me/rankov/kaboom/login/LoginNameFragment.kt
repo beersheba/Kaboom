@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import me.rankov.kaboom.R
 
 class LoginNameFragment : Fragment() {
@@ -17,20 +16,11 @@ class LoginNameFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login_name, container, false)
     }
 
-    private val options = navOptions {
-        anim {
-            enter = R.anim.slide_in_right
-            exit = R.anim.slide_out_left
-            popEnter = R.anim.slide_in_left
-            popExit = R.anim.slide_out_right
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.nick_next_button)
         button?.setOnClickListener {
-            findNavController().navigate(R.id.loginCountryFragment, null, options)
+            findNavController().navigate(R.id.actionNameToCountry)
         }
     }
 }
