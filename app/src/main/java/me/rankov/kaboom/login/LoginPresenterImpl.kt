@@ -9,6 +9,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
 
     override fun onSignedOut() {
         loginView?.updateUI(null)
+        loginView?.navigateToRegister(R.id.loginHomeFragment)
     }
 
     override fun onSuccess(user: FirebaseUser?) {

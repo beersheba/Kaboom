@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         } else {
             signInButton.visibility = View.VISIBLE
             signOutButton.visibility = View.GONE
-            navigateToRegister(R.id.loginHomeFragment)
         }
     }
 }
