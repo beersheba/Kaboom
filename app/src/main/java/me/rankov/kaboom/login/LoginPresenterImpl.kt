@@ -3,6 +3,7 @@ package me.rankov.kaboom.login
 import android.content.Intent
 import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.R
+import org.jetbrains.anko.bundleOf
 
 class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor: LoginInteractor) :
         LoginContract.Presenter, LoginInteractor.OnLoginListener {
@@ -14,7 +15,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
 
     override fun onSuccess(user: FirebaseUser?) {
         loginView?.updateUI(user)
-        checkRegistration()
+        checkRegistration(user)
     }
 
     override fun onFail() {
@@ -33,15 +34,18 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         val currentUser = loginInteractor.getUser()
         loginView?.updateUI(currentUser)
         if (currentUser != null) {
-            checkRegistration()
+            checkRegistration(currentUser)
         }
     }
 
-    private fun checkRegistration() {
+    private fun checkRegistration(user: FirebaseUser?) {
         val nickname = loginInteractor.getNickname()
         val country = loginInteractor.getCountry()
         when {
-            nickname.isEmpty() -> loginView?.navigateToRegister(R.id.actionHomeToName)
+            nickname.isEmpty() -> {
+                val bundle = bundleOf("user" to user)
+                loginView?.navigateToRegister(R.id.actionHomeToName, bundle)
+            }
             country < 0 -> loginView?.navigateToRegister(R.id.actionHomeToCountry)
             else -> loginView?.navigateToMain()
         }

@@ -22,6 +22,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         findNavController(R.id.login_host_fragment).navigate(fragmentId)
     }
 
+    override fun navigateToRegister(fragmentId: Int, bundle: Bundle) {
+        findNavController(R.id.login_host_fragment).navigate(fragmentId, bundle)
+    }
+
     override fun navigateToMain() {
         toast("Going to main screen") //To change body of created functions use File | Settings | File Templates.
     }
