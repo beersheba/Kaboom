@@ -2,7 +2,6 @@ package me.rankov.kaboom.login
 
 import android.content.Intent
 import com.google.firebase.auth.FirebaseUser
-import me.rankov.kaboom.R
 import org.jetbrains.anko.bundleOf
 
 class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor: LoginInteractor) :
@@ -44,9 +43,9 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         when {
             nickname.isEmpty() -> {
                 val bundle = bundleOf("user" to user)
-                loginView?.navigateToRegister(R.id.actionHomeToName, bundle)
+                loginView?.navigateToName(bundle)
             }
-            country < 0 -> loginView?.navigateToRegister(R.id.actionHomeToCountry)
+            country < 0 -> loginView?.navigateToCountry()
             else -> loginView?.navigateToMain()
         }
     }

@@ -10,8 +10,8 @@ interface LoginContract {
         fun signIn(signInIntent: Intent, requestCode: Int)
         fun updateUI(user: FirebaseUser?)
         fun navigateToMain()
-        fun navigateToRegister(fragmentId: Int)
-        fun navigateToRegister(fragmentId: Int, bundle: Bundle)
+        fun navigateToName(bundle: Bundle)
+        fun navigateToCountry()
         fun navigateToHome()
     }
 
