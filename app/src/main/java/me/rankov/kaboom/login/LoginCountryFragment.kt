@@ -1,5 +1,6 @@
 package me.rankov.kaboom.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import me.rankov.kaboom.R
-import org.jetbrains.anko.support.v4.toast
+import me.rankov.kaboom.map.MapActivity
 
 class LoginCountryFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -20,7 +21,8 @@ class LoginCountryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.country_next_button)
         button?.setOnClickListener {
-            toast("Going to main screen") //To change body of created functions use File | Settings | File Templates.
+            var intent = Intent(context, MapActivity::class.java)
+            startActivity(intent)
         }
     }
 }

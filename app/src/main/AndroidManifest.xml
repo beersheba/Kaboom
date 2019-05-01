@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".map.MapActivity"></activity>
         <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
         <activity
             android:name=".country_select.list.CountriesListActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar.DefaultActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar.DefaultActivity" />
         <activity
             android:name=".country_select.CountryDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar.DefaultActivity" />
