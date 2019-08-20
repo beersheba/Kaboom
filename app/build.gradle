@@ -41,12 +41,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.anko:anko:$anko_version"
 
-    //Glide
+    //Images
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.kirich1409.svgplugin:glide4:1.0.0'
 
-    //Retrofit
+    //HTTP
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version") {
@@ -63,6 +63,10 @@ dependencies {
     //Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+
+    //Maps
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.2.0'
+
 }
 
 repositories {
