@@ -66,7 +66,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
 
             enableLocationComponent(it)
         }
-
     }
 
     @SuppressLint("MissingPermission")
@@ -110,10 +109,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
             permissionsManager = PermissionsManager(this)
             permissionsManager?.requestLocationPermissions(this)
         }
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
     }
 
     public override fun onStart() {
