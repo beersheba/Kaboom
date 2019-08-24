@@ -9,7 +9,7 @@ interface LoginContract {
     interface View {
         fun signIn(signInIntent: Intent, requestCode: Int)
         fun updateUI(user: FirebaseUser?)
-        fun navigateToMain()
+        fun navigateToMap()
         fun navigateToName(bundle: Bundle)
         fun navigateToCountry()
         fun navigateToHome()

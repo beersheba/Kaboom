@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import me.rankov.kaboom.R
-import org.jetbrains.anko.toast
+import me.rankov.kaboom.map.MapActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
     override fun navigateToName(bundle: Bundle) {
@@ -31,8 +31,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         )
     }
 
-    override fun navigateToMain() {
-        toast("Going to main screen") //To change body of created functions use File | Settings | File Templates.
+    override fun navigateToMap() {
+        val intent = Intent(this, MapActivity::class.java)
+        startActivity(intent)
     }
 
     private val presenter = LoginPresenterImpl(this, LoginInteractor())

@@ -1,7 +1,9 @@
 package me.rankov.kaboom.login
 
 import android.content.Intent
+import android.util.Log
 import com.google.firebase.auth.FirebaseUser
+import me.rankov.kaboom.App
 import org.jetbrains.anko.bundleOf
 
 class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor: LoginInteractor) :
@@ -40,13 +42,21 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
     private fun checkRegistration(user: FirebaseUser?) {
         val nickname = loginInteractor.getNickname()
         val country = loginInteractor.getCountry()
+
+        user?.getIdToken(true)?.addOnCompleteListener {
+            task -> if (task.isSuccessful) {
+            val token = task.getResult()?.token
+            Log.d(App.TAG, "token: $token")
+        }
+        }
+
         when {
             nickname.isEmpty() -> {
                 val bundle = bundleOf("user" to user)
                 loginView?.navigateToName(bundle)
             }
-            country < 0 -> loginView?.navigateToCountry()
-            else -> loginView?.navigateToMain()
+//            country < 0 -> loginView?.navigateToCountry()
+            else -> loginView?.navigateToMap()
         }
     }
 
