@@ -43,13 +43,6 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         val nickname = loginInteractor.getNickname()
         val country = loginInteractor.getCountry()
 
-        user?.getIdToken(true)?.addOnCompleteListener {
-            task -> if (task.isSuccessful) {
-            val token = task.getResult()?.token
-            Log.d(App.TAG, "token: $token")
-        }
-        }
-
         when {
             nickname.isEmpty() -> {
                 val bundle = bundleOf("user" to user)
@@ -57,6 +50,15 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
             }
 //            country < 0 -> loginView?.navigateToCountry()
             else -> loginView?.navigateToMap()
+        }
+    }
+
+    private fun getToken(user: FirebaseUser?) {
+        user?.getIdToken(true)?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result?.token
+                Log.d(App.TAG, "token: $token")
+            }
         }
     }
 
