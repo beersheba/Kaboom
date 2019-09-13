@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import me.rankov.kaboom.R
-import me.rankov.kaboom.map.MapActivity
+import me.rankov.kaboom.country_select.list.CountriesListActivity
 
 class LoginCountryFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +21,8 @@ class LoginCountryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.country_next_button)
         button?.setOnClickListener {
-            var intent = Intent(context, MapActivity::class.java)
+//            var intent = Intent(context, MapActivity::class.java)
+            var intent = Intent(context, CountriesListActivity::class.java)
             startActivity(intent)
         }
     }

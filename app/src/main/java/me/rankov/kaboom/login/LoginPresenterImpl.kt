@@ -49,7 +49,8 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
                 loginView?.navigateToName(bundle)
             }
 //            country < 0 -> loginView?.navigateToCountry()
-            else -> loginView?.navigateToMap()
+//            else -> loginView?.navigateToMap()
+            else -> loginView?.navigateToList()
         }
     }
 

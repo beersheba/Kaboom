@@ -10,9 +10,15 @@ import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import me.rankov.kaboom.R
+import me.rankov.kaboom.country_select.list.CountriesListActivity
 import me.rankov.kaboom.map.MapActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
+    override fun navigateToList() {
+        val intent = Intent(this, CountriesListActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun navigateToName(bundle: Bundle) {
         if (navController.currentDestination?.id == R.id.loginHomeFragment) {
             navController.navigate(R.id.actionHomeToName, bundle)
