@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "136505228760-7a55i00hbjpsnin2pfqlq5e5vl50r81n.apps.googleusercontent.com",
+          "client_id": "136505228760-5gh5m6tua3085epod3rqq1itif1ticen.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "me.rankov.kaboom",
-            "certificate_hash": "9049506f7bef3ede90ffcec80e8fe2658f179fbb"
+            "certificate_hash": "e28ecd5a0b153d609e5d16e7a36e1d3b37109de4"
           }
         },
         {
