@@ -1,4 +1,4 @@
-package me.rankov.kaboom.country_select
+package me.rankov.kaboom.country
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -12,8 +12,8 @@ import me.rankov.kaboom.EXTRA_COUNTRY
 import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country_select.details.CountryDetailsContract.View
-import me.rankov.kaboom.country_select.details.CountryDetailsPresenterImpl
+import me.rankov.kaboom.country.details.CountryDetailsContract.View
+import me.rankov.kaboom.country.details.CountryDetailsPresenterImpl
 import java.text.NumberFormat
 
 

@@ -1,7 +1,7 @@
-package me.rankov.kaboom.country_select.list
+package me.rankov.kaboom.country.list
 
 import android.widget.ImageView
-import me.rankov.kaboom.country_select.Country
+import me.rankov.kaboom.country.Country
 
 interface CountriesListContract {
     interface View {

@@ -1,9 +1,9 @@
-package me.rankov.kaboom.country_select.list
+package me.rankov.kaboom.country.list
 
 import android.widget.ImageView
-import me.rankov.kaboom.country_select.Country
-import me.rankov.kaboom.country_select.list.CountriesListContract.Presenter
-import me.rankov.kaboom.country_select.list.CountriesListContract.View
+import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.country.list.CountriesListContract.Presenter
+import me.rankov.kaboom.country.list.CountriesListContract.View
 
 class CountriesListPresenterImpl(var countriesListView: View?,
                                  val loadCountriesInteractor: CountriesListLoadInteractor) : Presenter {

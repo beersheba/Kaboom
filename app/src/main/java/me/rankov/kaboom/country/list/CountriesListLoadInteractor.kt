@@ -1,7 +1,7 @@
-package me.rankov.kaboom.country_select.list
+package me.rankov.kaboom.country.list
 
 import me.rankov.kaboom.BuildConfig
-import me.rankov.kaboom.country_select.Country
+import me.rankov.kaboom.country.Country
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call

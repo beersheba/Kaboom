@@ -1,9 +1,9 @@
-package me.rankov.kaboom.country_select.details
+package me.rankov.kaboom.country.details
 
-import me.rankov.kaboom.country_select.Country
-import me.rankov.kaboom.country_select.CountryDetailsInteractor
-import me.rankov.kaboom.country_select.details.CountryDetailsContract.Presenter
-import me.rankov.kaboom.country_select.details.CountryDetailsContract.View
+import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.country.CountryDetailsInteractor
+import me.rankov.kaboom.country.details.CountryDetailsContract.Presenter
+import me.rankov.kaboom.country.details.CountryDetailsContract.View
 
 class CountryDetailsPresenterImpl(var countryView: View?,
                                   val countryDetailsInteractor: CountryDetailsInteractor,

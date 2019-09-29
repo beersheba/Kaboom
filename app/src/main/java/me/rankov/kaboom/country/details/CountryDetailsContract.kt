@@ -1,6 +1,6 @@
-package me.rankov.kaboom.country_select.details
+package me.rankov.kaboom.country.details
 
-import me.rankov.kaboom.country_select.Country
+import me.rankov.kaboom.country.Country
 
 interface CountryDetailsContract {
     interface View {

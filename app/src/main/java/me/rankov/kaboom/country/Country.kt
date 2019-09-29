@@ -1,4 +1,4 @@
-package me.rankov.kaboom.country_select
+package me.rankov.kaboom.country
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,4 +1,4 @@
-package me.rankov.kaboom.country_select.list
+package me.rankov.kaboom.country.list
 
 import android.content.Context
 import android.support.v4.view.ViewCompat.setTransitionName
@@ -11,7 +11,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.view_country_item.view.*
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country_select.Country
+import me.rankov.kaboom.country.Country
 
 
 class CountriesListItemAdapter(private val context: Context,

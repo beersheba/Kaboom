@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country_select.list.CountriesListActivity
+import me.rankov.kaboom.country.list.CountriesListActivity
 
 class LoginCountryFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
