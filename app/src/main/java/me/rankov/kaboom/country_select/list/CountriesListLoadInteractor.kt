@@ -36,7 +36,7 @@ class CountriesListLoadInteractor {
 
     fun loadCountries(callback: (List<Country>) -> Unit) {
         val map = HashMap<String, String>()
-        map["fields"] = "name;flag;population"
+        map["fields"] = "name;flag;population;latlng"
         val call = countriesService.getAllCountries(map)
         call.enqueue(object : Callback<List<Country>> {
             override fun onFailure(call: Call<List<Country>>, t: Throwable) {
@@ -46,7 +46,7 @@ class CountriesListLoadInteractor {
             override fun onResponse(call: Call<List<Country>>, response: Response<List<Country>>) {
                 val countries = mutableListOf<Country>()
                 response.body()?.forEach {
-                    countries.add(Country(it.name, it.flag, it.population))
+                    countries.add(Country(it.name, it.flag, it.population, it.latlng))
                 }
                 callback(countries)
             }
