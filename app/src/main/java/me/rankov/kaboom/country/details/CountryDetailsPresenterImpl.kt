@@ -14,10 +14,11 @@ class CountryDetailsPresenterImpl(var countryView: View?,
     }
 
     override fun onAttackClicked(country: Country) {
-
+        countryView?.attack(country)
     }
 
     override fun onHealClicked(country: Country) {
+        countryView?.heal(country)
     }
 
     override fun onDestroy() {

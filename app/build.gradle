@@ -67,6 +67,8 @@ dependencies {
     //Maps
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.2.0'
 
+    //Globe
+    implementation 'com.mousebirdconsulting.maply:Android:2.5'
 }
 
 repositories {

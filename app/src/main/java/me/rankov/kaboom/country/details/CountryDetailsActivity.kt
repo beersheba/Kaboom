@@ -1,5 +1,6 @@
 package me.rankov.kaboom.country
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,7 @@ import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.details.CountryDetailsContract.View
 import me.rankov.kaboom.country.details.CountryDetailsPresenterImpl
+import me.rankov.kaboom.stats.StatsActivity
 import java.text.NumberFormat
 
 
@@ -41,14 +43,18 @@ class CountryDetailsActivity : AppCompatActivity(), View {
 
                 })
                 .into(flag)
+        heal_button.setOnClickListener { presenter.onHealClicked(country) }
+        attack_button.setOnClickListener { presenter.onAttackClicked(country) }
     }
 
     override fun heal(country: Country) {
-        presenter.onHealClicked(country)
+
     }
 
     override fun attack(country: Country) {
-        presenter.onAttackClicked(country)
+        var intent = Intent(this, StatsActivity::class.java)
+        intent.putExtra(EXTRA_COUNTRY, country)
+        startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
