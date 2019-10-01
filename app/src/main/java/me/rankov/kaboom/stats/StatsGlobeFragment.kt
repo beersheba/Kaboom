@@ -13,6 +13,9 @@ import java.io.File
 import java.util.*
 
 class StatsGlobeFragment : GlobeMapFragment() {
+
+    val country by lazy { arguments?.getParcelable<Country>(EXTRA_COUNTRY) }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, inState: Bundle?): View? {
         super.onCreateView(inflater, container, inState)
         return baseControl.contentView
@@ -40,7 +43,6 @@ class StatsGlobeFragment : GlobeMapFragment() {
         baseLayer.setCoverPoles(true)
         baseLayer.setHandleEdges(true)
 
-        val country: Country? = arguments?.getParcelable(EXTRA_COUNTRY)
         val latlng = country?.latlng
         val lat = latlng?.get(0) ?: 31.5
         val lng = latlng?.get(1) ?: 34.75
