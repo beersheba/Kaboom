@@ -1,5 +1,6 @@
 package me.rankov.kaboom.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.R
+import me.rankov.kaboom.country.list.CountriesListActivity
 import me.rankov.kaboom.prefs
 
 class LoginNameFragment : Fragment() {
@@ -29,7 +30,9 @@ class LoginNameFragment : Fragment() {
 
         button.setOnClickListener {
             prefs.nickname = initName
-            findNavController().navigate(R.id.actionNameToCountry)
+//            findNavController().navigate(R.id.actionNameToCountry)
+            var intent = Intent(context, CountriesListActivity::class.java)
+            startActivity(intent)
         }
     }
 }
