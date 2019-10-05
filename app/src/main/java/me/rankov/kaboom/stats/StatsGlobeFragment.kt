@@ -51,10 +51,28 @@ class StatsGlobeFragment : GlobeMapFragment() {
         // add layer and position
 //        globeControl.addLayer(baseLayer)
         KotlinFix.addLayer(globeControl, baseLayer)
-        globeControl.animatePositionGeo(Math.toRadians(lng), Math.toRadians(lat), 0.5, 1.0)
+        globeControl.animatePositionGeo(Math.toRadians(lng), Math.toRadians(lat), 0.4, 1.0)
+
+        // add place stats shape
+//        insertShapes(lat, lng)
 
         // add place label
         insertLabels(lat, lng, name)
+    }
+
+    private fun insertShapes(lat: Double, lng: Double) {
+        val shapes = ArrayList<Shape>()
+
+        val shape = ShapeSphere()
+        shape.loc = Point2d.FromDegrees(lng, lat)
+        shape.radius = 0.04f // 1.0 is the radius of the Earth
+        shapes.add(shape)
+
+        val shapeInfo = ShapeInfo()
+        shapeInfo.setColor(0.7f, 0.2f, 0.7f, 0.8f) // R, G, B, A - values 0.0 -> 1.0
+        shapeInfo.drawPriority = 1000000
+
+        val componentObject = globeControl.addShapes(shapes, shapeInfo, MaplyBaseController.ThreadMode.ThreadAny)
     }
 
     private fun insertLabels(lat: Double, lng: Double, name: String) {
