@@ -4,9 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.BasePresenter
+import me.rankov.kaboom.BaseView
 
 interface LoginContract {
-    interface View {
+    interface View: BaseView {
         fun signIn(signInIntent: Intent, requestCode: Int)
         fun updateUI(user: FirebaseUser?)
         fun navigateToMap()

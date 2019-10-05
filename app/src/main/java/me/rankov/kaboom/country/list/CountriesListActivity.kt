@@ -11,12 +11,17 @@ import androidx.core.view.ViewCompat.getTransitionName
 import kotlinx.android.synthetic.main.activity_countries_list.*
 import me.rankov.kaboom.EXTRA_COUNTRY
 import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
+import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.Country
 import me.rankov.kaboom.country.CountryDetailsActivity
 import org.jetbrains.anko.toast
 
 class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
+    override fun setBackground() {
+        GlideApp.with(this).load(R.drawable.earth).centerCrop().into(list_background)
+    }
+
     private val presenter = CountriesListPresenterImpl(this, CountriesListLoadInteractor())
 
     override fun navigateToCountry(country: Country, imageView: ImageView) {

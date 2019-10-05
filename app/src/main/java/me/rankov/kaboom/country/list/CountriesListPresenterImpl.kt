@@ -9,6 +9,7 @@ class CountriesListPresenterImpl(var countriesListView: View?,
                                  val loadCountriesInteractor: CountriesListLoadInteractor) : Presenter {
 
     override fun onCreate() {
+        countriesListView?.setBackground()
         countriesListView?.showProgress()
         loadCountriesInteractor.loadCountries(::onCountriesLoaded)
     }

@@ -10,6 +10,7 @@ class CountryDetailsPresenterImpl(var countryView: View?,
                                   val country: Country) : Presenter {
 
     override fun onCreate() {
+        countryView?.setBackground()
         countryView?.setCountry(country)
     }
 

@@ -24,6 +24,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
     }
 
     override fun onCreate() {
+        loginView?.setBackground()
         loginInteractor.initGoogleClient()
     }
 

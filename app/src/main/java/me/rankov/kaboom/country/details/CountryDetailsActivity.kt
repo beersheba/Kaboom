@@ -20,6 +20,10 @@ import java.text.NumberFormat
 
 
 class CountryDetailsActivity : AppCompatActivity(), View {
+    override fun setBackground() {
+        GlideApp.with(this).load(R.drawable.earth).centerCrop().into(details_background)
+    }
+
     private lateinit var country: Country
     private lateinit var presenter: CountryDetailsPresenterImpl
 

@@ -30,11 +30,10 @@
         app:layout_constraintTop_toTopOf="@+id/heal_button" />
 
     <ImageView
+        android:id="@+id/details_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.5"
-        android:scaleType="centerCrop"
-        android:src="@drawable/earth"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
