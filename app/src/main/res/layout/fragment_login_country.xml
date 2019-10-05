@@ -13,6 +13,7 @@
         android:fontFamily="sans-serif-light"
         android:text="@string/choose_your_country"
         android:textSize="20sp"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/country_icon"
         app:layout_constraintStart_toStartOf="@+id/country_icon" />
