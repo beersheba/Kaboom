@@ -101,7 +101,7 @@ class LoginInteractor {
         }
     }
 
-    fun getNickname(): String {
+    fun getNickname(): String? {
         return prefs.nickname
     }
 

@@ -2,12 +2,12 @@ package me.rankov.kaboom.country.list
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.view.ViewCompat.getTransitionName
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat.getTransitionName
 import kotlinx.android.synthetic.main.activity_countries_list.*
 import me.rankov.kaboom.EXTRA_COUNTRY
 import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME

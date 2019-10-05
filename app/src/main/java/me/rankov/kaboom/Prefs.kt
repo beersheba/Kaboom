@@ -13,7 +13,7 @@ class Prefs(context: Context) {
         get() = prefs.getInt(COUNTRY, -1)
         set(value) = prefs.edit().putInt(COUNTRY, value).apply()
 
-    var nickname: String
+    var nickname: String?
         get() = prefs.getString(NICKNAME, "")
         set(value) = prefs.edit().putString(NICKNAME, value).apply()
 }

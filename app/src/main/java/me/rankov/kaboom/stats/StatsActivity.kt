@@ -1,7 +1,7 @@
 package me.rankov.kaboom.stats
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_stats.*
 import me.rankov.kaboom.R
 

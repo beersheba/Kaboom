@@ -44,7 +44,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         val country = loginInteractor.getCountry()
 
         when {
-            nickname.isEmpty() -> {
+            nickname.isNullOrBlank() -> {
                 val bundle = bundleOf("user" to user)
                 loginView?.navigateToName(bundle)
             }
