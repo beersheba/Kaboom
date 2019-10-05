@@ -61,7 +61,6 @@ class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
         setSupportActionBar(toolbar)
         setTitle(R.string.loading)
         presenter.onCreate()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

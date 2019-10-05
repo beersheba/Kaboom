@@ -69,7 +69,6 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         country = intent.getParcelableExtra(EXTRA_COUNTRY)
         presenter = CountryDetailsPresenterImpl(this, CountryDetailsInteractor(), country)
         presenter.onCreate()
-
     }
 
     override fun onDestroy() {

@@ -3,6 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
     </style>
 
     <style name="AppTheme.NoActionBar.DefaultActivity">
