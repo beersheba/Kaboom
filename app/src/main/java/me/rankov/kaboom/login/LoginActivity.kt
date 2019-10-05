@@ -52,12 +52,17 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private lateinit var navController: NavController
 
+    private lateinit var backgroundMusic: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         signInButton.setOnClickListener { presenter.onSignIn() }
         signOutButton.setOnClickListener { presenter.onSignOut() }
         navController = findNavController(R.id.login_host_fragment)
+//        backgroundMusic = Intent(this, MusicService::class.java)
+//        backgroundMusic.action = ACTION_PLAY
+//        startService(backgroundMusic)
         presenter.onCreate()
     }
 
