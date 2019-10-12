@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import me.rankov.kaboom.GlideApp
+import me.rankov.kaboom.MusicService
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.list.CountriesListActivity
 import me.rankov.kaboom.map.MapActivity
@@ -60,9 +61,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         signInButton.setOnClickListener { presenter.onSignIn() }
         signOutButton.setOnClickListener { presenter.onSignOut() }
         navController = findNavController(R.id.login_host_fragment)
-//        backgroundMusic = Intent(this, MusicService::class.java)
-//        backgroundMusic.action = ACTION_PLAY
-//        startService(backgroundMusic)
+        backgroundMusic = Intent(this, MusicService::class.java)
+        startService(backgroundMusic)
         presenter.onCreate()
     }
 

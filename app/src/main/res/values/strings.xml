@@ -15,4 +15,6 @@
     <string name="button_next">Next</string>
     <string name="button_go">Go</string>
     <string name="mapbox_access_token">pk.eyJ1IjoicmFua292IiwiYSI6ImNqcGhmY2p6czA4OHoza3F0OGMwMmswczgifQ.2FQAbG1FbwgDtrmTkj2u7w</string>
+    <string name="MUSIC_ACTION">music_action</string>
+    <string name="MUSIC_STATUS">music_status</string>
 </resources>

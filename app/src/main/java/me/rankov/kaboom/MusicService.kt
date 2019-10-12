@@ -1,37 +1,26 @@
 package me.rankov.kaboom
 
 import android.app.Service
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.media.MediaPlayer
 import android.os.IBinder
-
-const val ACTION_PLAY: String = "PLAY"
-const val ACTION_PAUSE: String = "PAUSE"
-const val ACTION_STOP: String = "STOP"
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class MusicService : Service() {
     private var player: MediaPlayer? = null
 
     override fun onCreate() {
-        player = MediaPlayer.create(this, R.raw.back_music)
-        player?.apply {
-            isLooping = true
-        }
+        preparePlayer()
+        LocalBroadcastManager.getInstance(this)
+                .registerReceiver(stateReceiver, IntentFilter(getString(R.string.MUSIC_ACTION)))
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
-            ACTION_PLAY -> {
-                player?.start()
-            }
-            ACTION_PAUSE -> {
-                player?.pause()
-            }
-            ACTION_STOP -> {
-                player?.stop()
-            }
-        }
-        return START_STICKY
+        player?.start()
+        return START_NOT_STICKY
     }
 
     override fun onDestroy() {
@@ -43,5 +32,30 @@ class MusicService : Service() {
         return null
     }
 
+    private val stateReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            when (intent.getIntExtra(getString(R.string.MUSIC_STATUS), 2)) {
+                0 -> player?.pause()
+                1 ->
+                    if (player != null)
+                        player?.start()
+                    else {
+                        preparePlayer()
+                        player?.start()
+                    }
+                else -> {
+                    player?.stop()
+                    player?.release()
+                }
+            }
+        }
+    }
 
+    private fun preparePlayer() {
+        player = MediaPlayer.create(this, R.raw.back_music)
+        player?.apply {
+            isLooping = true
+            setVolume(0.2f, 0.2f)
+        }
+    }
 }
