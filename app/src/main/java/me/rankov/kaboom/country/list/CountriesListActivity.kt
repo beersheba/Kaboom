@@ -72,4 +72,7 @@ class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
         super.onDestroy()
         presenter.onDestroy()
     }
+
+    override fun onBackPressed() {
+    }
 }
