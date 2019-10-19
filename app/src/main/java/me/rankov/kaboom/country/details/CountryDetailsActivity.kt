@@ -52,10 +52,14 @@ class CountryDetailsActivity : AppCompatActivity(), View {
     }
 
     override fun heal(country: Country) {
-
+        goToStats(country)
     }
 
     override fun attack(country: Country) {
+        goToStats(country)
+    }
+
+    private fun goToStats(country: Country) {
         var intent = Intent(this, StatsActivity::class.java)
         intent.putExtra(EXTRA_COUNTRY, country)
         startActivity(intent)
