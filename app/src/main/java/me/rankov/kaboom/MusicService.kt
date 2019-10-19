@@ -52,7 +52,7 @@ class MusicService : Service() {
     }
 
     private fun preparePlayer() {
-        player = MediaPlayer.create(this, R.raw.back_music)
+        player = MediaPlayer.create(this, R.raw.back_no_beat)
         player?.apply {
             isLooping = true
             setVolume(0.2f, 0.2f)
