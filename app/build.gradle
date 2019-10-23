@@ -7,7 +7,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "me.rankov.kaboom"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 4
         versionName "0.1.3"
@@ -31,7 +31,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -74,6 +73,12 @@ dependencies {
 
     //Globe
     implementation 'com.mousebirdconsulting.maply:Android:2.5'
+
+    // Amazon
+    implementation('com.amazonaws:aws-android-sdk-mobile-client:2.15.+@aar') { transitive = true }
+    implementation('com.amazonaws:aws-android-sdk-auth-google:2.15.+@aar') { transitive = true }
+    implementation('com.amazonaws:aws-android-sdk-auth-userpools:2.15.+@aar') { transitive = true}
+    implementation('com.amazonaws:aws-android-sdk-auth-ui:2.15.+@aar') { transitive = true }
 
 }
 
