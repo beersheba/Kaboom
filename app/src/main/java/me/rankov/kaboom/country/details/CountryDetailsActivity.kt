@@ -14,6 +14,7 @@ import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.details.CountryDetailsContract.View
+import me.rankov.kaboom.country.details.CountryDetailsInteractor
 import me.rankov.kaboom.country.details.CountryDetailsPresenterImpl
 import me.rankov.kaboom.stats.StatsActivity
 import java.text.NumberFormat

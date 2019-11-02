@@ -1,34 +1,16 @@
 package me.rankov.kaboom.country.list
 
-import me.rankov.kaboom.BuildConfig
+import me.rankov.kaboom.BaseInteractor
 import me.rankov.kaboom.country.Country
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
-class CountriesListLoadInteractor {
+class CountriesListLoadInteractor : BaseInteractor("https://restcountries.eu") {
+    private val countriesService = retrofit.create(CountriesService::class.java)
 
-    val client = OkHttpClient().newBuilder()
-            .addInterceptor(HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG)
-                    HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            })
-            .build()
-
-    val retrofit = Retrofit.Builder()
-            .baseUrl("https://restcountries.eu")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    val countriesService = retrofit.create(CountriesService::class.java)
-    
     interface CountriesService {
         @GET("/rest/v2/all")
         fun getAllCountries(@QueryMap options: Map<String, String>): Call<List<Country>>

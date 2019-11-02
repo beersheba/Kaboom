@@ -1,7 +1,6 @@
 package me.rankov.kaboom.country.details
 
 import me.rankov.kaboom.country.Country
-import me.rankov.kaboom.country.CountryDetailsInteractor
 import me.rankov.kaboom.country.details.CountryDetailsContract.Presenter
 import me.rankov.kaboom.country.details.CountryDetailsContract.View
 
@@ -15,10 +14,12 @@ class CountryDetailsPresenterImpl(var countryView: View?,
     }
 
     override fun onAttackClicked(country: Country) {
+        countryDetailsInteractor.attack(country)
         countryView?.attack(country)
     }
 
     override fun onHealClicked(country: Country) {
+        countryDetailsInteractor.heal(country)
         countryView?.heal(country)
     }
 
