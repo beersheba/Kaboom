@@ -1,10 +1,10 @@
 package me.rankov.kaboom.country.details
 
-data class CountryAction(var userId: String = "",
-                         var action: String = "",
-                         var timestamp: String = "",
-                         var source: String = "",
-                         var target: String = "",
-                         var targetId: String = "",
-                         var weaponId: String = "",
-                         var impact: String = "")
+data class CountryAction(var userid: String = "1",
+                         var action: String = "0",
+                         var timestamp: String = System.currentTimeMillis().toString(),
+                         var source: String = "0,0",
+                         var target: String = "100,100",
+                         var targetid: String = "1",
+                         var weaponid: String = "1",
+                         var impact: String = "1")
