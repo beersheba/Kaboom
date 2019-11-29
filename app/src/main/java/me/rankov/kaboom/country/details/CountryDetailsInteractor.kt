@@ -20,12 +20,17 @@ class CountryDetailsInteractor : BaseInteractor("https://7nx0ovlz52.execute-api.
         fun callAction(@Body action: CountryAction): Call<ResponseBody>
     }
 
+    enum class Action(val type: String) {
+        HEAL("0"),
+        ATTACK("1")
+    }
+
     fun attack(country: Country) {
-        performAction(country, "0")
+        performAction(country, Action.HEAL.type)
     }
 
     fun heal(country: Country) {
-        performAction(country, "1")
+        performAction(country, Action.ATTACK.type)
     }
 
     private fun performAction(country: Country, action: String) {
