@@ -17,6 +17,7 @@ import me.rankov.kaboom.country.details.CountryDetailsContract.View
 import me.rankov.kaboom.country.details.CountryDetailsInteractor
 import me.rankov.kaboom.country.details.CountryDetailsPresenterImpl
 import me.rankov.kaboom.stats.StatsActivity
+import org.jetbrains.anko.selector
 import java.text.NumberFormat
 
 
@@ -48,22 +49,21 @@ class CountryDetailsActivity : AppCompatActivity(), View {
 
                 })
                 .into(flag)
-        heal_button.setOnClickListener { presenter.onHealClicked(country) }
-        attack_button.setOnClickListener { presenter.onAttackClicked(country) }
+        heal_button.setOnClickListener { presenter.onActionClicked(false) }
+        attack_button.setOnClickListener { presenter.onActionClicked(true) }
     }
 
-    override fun heal(country: Country) {
-        goToStats(country)
-    }
-
-    override fun attack(country: Country) {
-        goToStats(country)
-    }
-
-    private fun goToStats(country: Country) {
-        var intent = Intent(this, StatsActivity::class.java)
+    override fun goToStats(country: Country) {
+        val intent = Intent(this, StatsActivity::class.java)
         intent.putExtra(EXTRA_COUNTRY, country)
         startActivity(intent)
+    }
+
+    override fun showWeaponSelector(weapons: List<String>, attack: Boolean) {
+        val title = if (attack) "Weapon of choice" else "Cure of choice"
+        selector(title, weapons) { dialogInterface, i ->
+            presenter.onWeaponSelected(i, country, attack)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

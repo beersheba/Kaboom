@@ -13,14 +13,21 @@ class CountryDetailsPresenterImpl(var countryView: View?,
         countryView?.setCountry(country)
     }
 
-    override fun onAttackClicked(country: Country) {
-        countryDetailsInteractor.attack(country)
-        countryView?.attack(country)
+    override fun onActionClicked(attack: Boolean) {
+        val weaponNames =
+                if (attack) Weapons.getWeaponsNames()
+                else Weapons.getCuresNames()
+        countryView?.showWeaponSelector(weaponNames, attack)
     }
 
-    override fun onHealClicked(country: Country) {
-        countryDetailsInteractor.heal(country)
-        countryView?.heal(country)
+
+    override fun onWeaponSelected(id: Int, country: Country, attack: Boolean) {
+        if (attack) {
+            countryDetailsInteractor.attack(country)
+        } else {
+            countryDetailsInteractor.heal(country)
+        }
+        countryView?.goToStats(country)
     }
 
     override fun onDestroy() {
