@@ -66,13 +66,13 @@ class CountryDetailsActivity : AppCompatActivity(), View {
     override fun showAction(url: String) {
         GlideApp.with(this).asGif().load(url).listener(object : RequestListener<GifDrawable> {
             override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
+                enableProgress(false)
                 println(e)
-                progress.visibility = GONE
                 return false
             }
 
             override fun onResourceReady(resource: GifDrawable?, model: Any?, target: Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-                progress.visibility = GONE
+                enableProgress(false)
                 action_view.visibility = VISIBLE
                 var loopCount = 1
                 resource?.let {
@@ -93,11 +93,18 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         }).into(action_view)
     }
 
+    fun enableProgress(enabled: Boolean) {
+        val visibility = if (enabled) VISIBLE else GONE
+        progress.visibility = visibility
+        heal_button.isEnabled = !enabled
+        attack_button.isEnabled = !enabled
+    }
+
     override fun showWeaponSelector(weapons: List<String>, attack: Boolean) {
         val title = if (attack) "Weapon of choice" else "Cure of choice"
         selector(title, weapons) { dialogInterface, i ->
             presenter.onWeaponSelected(i, country, attack)
-            progress.visibility = VISIBLE
+            enableProgress(true)
         }
     }
 
