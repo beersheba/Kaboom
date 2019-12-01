@@ -3,9 +3,12 @@ package me.rankov.kaboom.country
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.activity_country_details.*
@@ -59,6 +62,37 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         startActivity(intent)
     }
 
+    override fun showAction(url: String) {
+        GlideApp.with(this).asGif().load(url).listener(object : RequestListener<GifDrawable> {
+            override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
+                println(e)
+                return false
+            }
+
+            override fun onResourceReady(resource: GifDrawable?, model: Any?, target: Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                action_view.visibility = VISIBLE
+                println(url)
+                println(resource?.frameCount)
+                var loopCount = 1
+                resource?.let {
+                    val minFramesCount = 20
+                    if (it.frameCount in 1 until minFramesCount) {
+                        loopCount = minFramesCount / it.frameCount
+                    }
+                }
+                println(loopCount)
+                resource?.setLoopCount(loopCount)
+                resource?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+                    override fun onAnimationEnd(drawable: Drawable?) {
+                        presenter.onActionImageShown(country)
+                        resource.unregisterAnimationCallback(this)
+                    }
+                })
+                return false
+            }
+        }).into(action_view)
+    }
+
     override fun showWeaponSelector(weapons: List<String>, attack: Boolean) {
         val title = if (attack) "Weapon of choice" else "Cure of choice"
         selector(title, weapons) { dialogInterface, i ->
@@ -74,6 +108,11 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         country = intent.getParcelableExtra(EXTRA_COUNTRY)
         presenter = CountryDetailsPresenterImpl(this, CountryDetailsInteractor(), country)
         presenter.onCreate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        action_view.visibility = android.view.View.INVISIBLE
     }
 
     override fun onDestroy() {

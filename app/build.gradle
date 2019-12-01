@@ -40,8 +40,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
 
     //Images
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    kapt 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.kirich1409.svgplugin:glide4:1.0.0'
 
     //HTTP

@@ -20,14 +20,21 @@ class CountryDetailsPresenterImpl(var countryView: View?,
         countryView?.showWeaponSelector(weaponNames, attack)
     }
 
+    override fun onActionImageShown(country: Country) {
+        countryView?.goToStats(country)
+    }
+
 
     override fun onWeaponSelected(id: Int, country: Country, attack: Boolean) {
-        if (attack) {
+        val baseUrl = "https://hands-of-god.s3-us-west-2.amazonaws.com/images/weapons/"
+        val actionImage: String = if (attack) {
             countryDetailsInteractor.attack(country)
+            Weapons.getWeapons()[id].image
         } else {
             countryDetailsInteractor.heal(country)
+            Weapons.getCures()[id].image
         }
-        countryView?.goToStats(country)
+        countryView?.showAction(baseUrl.plus(actionImage))
     }
 
     override fun onDestroy() {
