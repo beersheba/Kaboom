@@ -3,6 +3,7 @@ package me.rankov.kaboom.country
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
@@ -66,13 +67,13 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         GlideApp.with(this).asGif().load(url).listener(object : RequestListener<GifDrawable> {
             override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
                 println(e)
+                progress.visibility = GONE
                 return false
             }
 
             override fun onResourceReady(resource: GifDrawable?, model: Any?, target: Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                progress.visibility = GONE
                 action_view.visibility = VISIBLE
-                println(url)
-                println(resource?.frameCount)
                 var loopCount = 1
                 resource?.let {
                     val minFramesCount = 20
@@ -80,7 +81,6 @@ class CountryDetailsActivity : AppCompatActivity(), View {
                         loopCount = minFramesCount / it.frameCount
                     }
                 }
-                println(loopCount)
                 resource?.setLoopCount(loopCount)
                 resource?.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
                     override fun onAnimationEnd(drawable: Drawable?) {
@@ -97,6 +97,7 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         val title = if (attack) "Weapon of choice" else "Cure of choice"
         selector(title, weapons) { dialogInterface, i ->
             presenter.onWeaponSelected(i, country, attack)
+            progress.visibility = VISIBLE
         }
     }
 
