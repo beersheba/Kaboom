@@ -121,6 +121,7 @@ class CountryDetailsActivity : AppCompatActivity(), View {
     override fun onResume() {
         super.onResume()
         action_view.visibility = android.view.View.INVISIBLE
+        enableProgress(false)
     }
 
     override fun onDestroy() {
