@@ -1,9 +1,9 @@
 package me.rankov.kaboom.country.list
 
 import android.widget.ImageView
+import me.rankov.kaboom.country.ActionItem
 import me.rankov.kaboom.country.Country
-import me.rankov.kaboom.country.Weapon
-import me.rankov.kaboom.country.details.Weapons
+import me.rankov.kaboom.country.details.ActionItems
 import me.rankov.kaboom.country.list.CountriesListContract.Presenter
 import me.rankov.kaboom.country.list.CountriesListContract.View
 
@@ -13,12 +13,12 @@ class CountriesListPresenterImpl(var countriesListView: View?,
     override fun onCreate() {
         countriesListView?.setBackground()
         countriesListView?.showProgress()
-        loadCountriesInteractor.loadWeapons(::onWeaponsLoaded)
+        loadCountriesInteractor.loadActionItems(::onActionItemsLoaded)
         loadCountriesInteractor.loadCountries(::onCountriesLoaded)
     }
 
-    private fun onWeaponsLoaded(list: List<Weapon>) {
-        Weapons.init(list)
+    private fun onActionItemsLoaded(list: List<ActionItem>) {
+        ActionItems.init(list)
     }
 
     override fun onCountriesLoaded(countries: List<Country>) {

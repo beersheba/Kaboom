@@ -1,17 +1,17 @@
 package me.rankov.kaboom.country.details
 
-import me.rankov.kaboom.country.Weapon
+import me.rankov.kaboom.country.ActionItem
 
-object Weapons {
-    private val all = mutableListOf<Weapon>()
-    private val weapons = mutableListOf<Weapon>()
-    private val cures = mutableListOf<Weapon>()
+object ActionItems {
+    private val all = mutableListOf<ActionItem>()
+    private val weapons = mutableListOf<ActionItem>()
+    private val cures = mutableListOf<ActionItem>()
 
-    fun init(allWeapons: List<Weapon>) {
+    fun init(items: List<ActionItem>) {
         all.clear()
         weapons.clear()
         cures.clear()
-        all.addAll(allWeapons)
+        all.addAll(items)
         all.forEach {
             when (it.polarity) {
                 "0" -> weapons.add(it)
@@ -20,15 +20,15 @@ object Weapons {
         }
     }
 
-    fun getAll(): List<Weapon> {
+    fun getAll(): List<ActionItem> {
         return all
     }
 
-    fun getWeapons(): List<Weapon> {
+    fun getWeapons(): List<ActionItem> {
         return weapons
     }
 
-    fun getCures(): List<Weapon> {
+    fun getCures(): List<ActionItem> {
         return cures
     }
 
@@ -40,9 +40,9 @@ object Weapons {
         return getNames(getCures())
     }
 
-    private fun getNames(weapons: List<Weapon>): List<String> {
+    private fun getNames(items: List<ActionItem>): List<String> {
         val titles = mutableListOf<String>()
-        weapons.forEach {
+        items.forEach {
             titles.add(it.name)
         }
         return titles

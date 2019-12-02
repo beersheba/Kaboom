@@ -6,5 +6,5 @@ data class CountryAction(var userid: String = "1",
                          var source: String = "0,0",
                          var target: String = "100,100",
                          var targetid: String = "1",
-                         var weaponid: String = "1",
+                         var actionitemid: String = "1",
                          var impact: String = "1")

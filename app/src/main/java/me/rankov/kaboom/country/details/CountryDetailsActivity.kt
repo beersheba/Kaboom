@@ -100,10 +100,10 @@ class CountryDetailsActivity : AppCompatActivity(), View {
         attack_button.isEnabled = !enabled
     }
 
-    override fun showWeaponSelector(weapons: List<String>, attack: Boolean) {
+    override fun showActionSelector(items: List<String>, attack: Boolean) {
         val title = if (attack) "Weapon of choice" else "Cure of choice"
-        selector(title, weapons) { dialogInterface, i ->
-            presenter.onWeaponSelected(i, country, attack)
+        selector(title, items) { dialogInterface, i ->
+            presenter.onItemSelected(i, country, attack)
             enableProgress(true)
         }
     }

@@ -1,8 +1,8 @@
 package me.rankov.kaboom.country.list
 
 import me.rankov.kaboom.BaseInteractor
+import me.rankov.kaboom.country.ActionItem
 import me.rankov.kaboom.country.Country
-import me.rankov.kaboom.country.Weapon
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +17,7 @@ class CountriesListLoadInteractor : BaseInteractor("https://restcountries.eu") {
         fun getAllCountries(@QueryMap options: Map<String, String>): Call<List<Country>>
 
         @GET("https://hands-of-god.s3-us-west-2.amazonaws.com/reference/weapons.json")
-        fun getWeapons(): Call<List<Weapon>>
+        fun getActionItems(): Call<List<ActionItem>>
     }
 
     fun loadCountries(callback: (List<Country>) -> Unit) {
@@ -39,14 +39,14 @@ class CountriesListLoadInteractor : BaseInteractor("https://restcountries.eu") {
         })
     }
 
-    fun loadWeapons(callback: (List<Weapon>) -> Unit) {
-        val call = countriesService.getWeapons()
-        call.enqueue(object : Callback<List<Weapon>> {
-            override fun onFailure(call: Call<List<Weapon>>, t: Throwable) {
+    fun loadActionItems(callback: (List<ActionItem>) -> Unit) {
+        val call = countriesService.getActionItems()
+        call.enqueue(object : Callback<List<ActionItem>> {
+            override fun onFailure(call: Call<List<ActionItem>>, t: Throwable) {
                 println(t)
             }
 
-            override fun onResponse(call: Call<List<Weapon>>, response: Response<List<Weapon>>) {
+            override fun onResponse(call: Call<List<ActionItem>>, response: Response<List<ActionItem>>) {
                 response.body()?.let { callback(it) }
             }
         })

@@ -9,12 +9,12 @@ interface CountryDetailsContract {
         fun setCountry(country: Country)
         fun goToStats(country: Country)
         fun showAction(url: String)
-        fun showWeaponSelector(weapons: List<String>, attack: Boolean)
+        fun showActionSelector(weapons: List<String>, attack: Boolean)
     }
 
     interface Presenter : BasePresenter {
         fun onActionClicked(attack: Boolean)
         fun onActionImageShown(country: Country)
-        fun onWeaponSelected(id: Int, country: Country, attack: Boolean)
+        fun onItemSelected(id: Int, country: Country, attack: Boolean)
     }
 }
