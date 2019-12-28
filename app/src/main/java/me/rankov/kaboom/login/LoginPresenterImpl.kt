@@ -1,7 +1,9 @@
 package me.rankov.kaboom.login
 
+import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import com.amazonaws.mobile.client.AWSMobileClient
 import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.App
 import org.jetbrains.anko.bundleOf
@@ -10,22 +12,28 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         LoginContract.Presenter, LoginInteractor.OnLoginListener {
 
     override fun onSignedOut() {
-        loginView?.updateUI(null)
+        loginView?.updateUI(false)
         loginView?.navigateToHome()
     }
 
     override fun onSuccess(user: FirebaseUser?) {
-        loginView?.updateUI(user)
+        loginView?.updateUI(true)
         checkRegistration(user)
     }
 
+    override fun onSuccess() {
+        loginView?.updateUI(true)
+        loginView?.navigateToList()
+    }
+
     override fun onFail() {
-        loginView?.updateUI(null)
+        loginView?.updateUI(false)
     }
 
     override fun onCreate() {
         loginView?.setBackground()
         loginInteractor.initGoogleClient()
+        loginInteractor.initAwsClient(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -34,9 +42,13 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
 
     override fun onStart() {
         val currentUser = loginInteractor.getUser()
-        loginView?.updateUI(currentUser)
+        val userSignedIn = AWSMobileClient.getInstance().isSignedIn
+        loginView?.updateUI(userSignedIn)
         if (currentUser != null) {
             checkRegistration(currentUser)
+        }
+        if (userSignedIn) {
+            loginView?.navigateToList()
         }
     }
 
@@ -55,7 +67,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         }
     }
 
-    private fun getToken(user: FirebaseUser?) {
+    private fun getFirebaseToken(user: FirebaseUser?) {
         user?.getIdToken(true)?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val token = task.result?.token
@@ -64,10 +76,14 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         }
     }
 
-    override fun onSignIn() {
+    override fun onGoogleSignIn() {
         val signInIntent = loginInteractor.getIntent()
         val requestCode = loginInteractor.getCode()
         loginView?.signIn(signInIntent, requestCode)
+    }
+
+    override fun onAmazonSignIn(activity: Activity) {
+        loginInteractor.signInWithAmazon(activity, this)
     }
 
     override fun onSignOut() {

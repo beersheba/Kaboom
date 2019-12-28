@@ -1,7 +1,9 @@
 package me.rankov.kaboom.login
 
+import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import com.amazonaws.mobile.client.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,6 +20,7 @@ class LoginInteractor {
 
     interface OnLoginListener {
         fun onSuccess(user: FirebaseUser?)
+        fun onSuccess()
         fun onFail()
         fun onSignedOut()
     }
@@ -99,6 +102,8 @@ class LoginInteractor {
         googleSignInClient.signOut().addOnCompleteListener {
             listener.onSignedOut()
         }
+        // AWS sign out
+        AWSMobileClient.getInstance().signOut()
     }
 
     fun getNickname(): String? {
@@ -109,5 +114,69 @@ class LoginInteractor {
         return prefs.country
     }
 
+    fun signInWithAmazon(activity: Activity, listener: OnLoginListener) {
+        val hostedUIOptions = HostedUIOptions.builder()
+                .scopes("openid", "email")
+                .identityProvider("Google")
+                .build()
+
+        val signInUIOptions = SignInUIOptions.builder()
+                .hostedUIOptions(hostedUIOptions)
+                .build()
+
+        AWSMobileClient.getInstance().showSignIn(activity, signInUIOptions, object : Callback<UserStateDetails?> {
+            override fun onResult(details: UserStateDetails?) {
+                Log.d(App.TAG, "onResult: " + details?.userState)
+                try {
+                    Log.d(App.TAG, AWSMobileClient.getInstance().username)
+                    AWSMobileClient.getInstance().userAttributes.forEach {
+                        Log.d(App.TAG, it.key + ":" + it.value)
+                    }
+                } catch (e: Exception) {
+                    Log.e(App.TAG, "", e)
+                }
+                listener.onSuccess()
+            }
+
+            override fun onError(e: Exception?) {
+                Log.e(App.TAG, "onError: ", e)
+            }
+        })
+    }
+
+    fun initAwsClient(listener: OnLoginListener) {
+        AWSMobileClient.getInstance().initialize(App.applicationContext(), object : Callback<UserStateDetails?> {
+            override fun onResult(userStateDetails: UserStateDetails?) {
+                Log.i(App.TAG, userStateDetails?.userState.toString())
+            }
+
+            override fun onError(e: Exception?) {
+                Log.e(App.TAG, "Error during initialization", e)
+            }
+        })
+
+        AWSMobileClient.getInstance().addUserStateListener { userStateDetails ->
+            when (userStateDetails.userState) {
+                UserState.GUEST -> Log.i("userState", "user is in guest mode")
+                UserState.SIGNED_OUT -> {
+                    Log.i("userState", "user is signed out")
+                    listener.onSignedOut()
+                }
+                UserState.SIGNED_IN -> Log.i("userState", "user is signed in")
+                UserState.SIGNED_OUT_USER_POOLS_TOKENS_INVALID -> {
+                    Log.i("userState", "need to login again")
+                    listener.onSignedOut()
+                }
+                UserState.SIGNED_OUT_FEDERATED_TOKENS_INVALID -> {
+                    Log.i("userState", "user logged in via federation, but currently needs new tokens")
+                    listener.onSignedOut()
+                }
+                else -> {
+                    Log.e("userState", "unsupported")
+                    listener.onSignedOut()
+                }
+            }
+        }
+    }
 
 }

@@ -34,5 +34,19 @@
   "GoogleSignIn": {
     "ClientId-WebApp": "136505228760-83qa0r289pg1mda3qe9ctbjgultpq77c.apps.googleusercontent.com",
     "Permissions": "email,profile,openid"
+  },
+  "Auth": {
+    "Default": {
+      "OAuth": {
+        "WebDomain": "kaboom.auth.us-west-2.amazoncognito.com",
+        "AppClientId": "24orsdb2ctrc9hvc4b6stpp4vo",
+        "SignInRedirectURI": "kaboom://callback",
+        "SignOutRedirectURI": "kaboom://signout",
+        "Scopes": [
+          "openid",
+          "email"
+        ]
+      }
+    }
   }
 }

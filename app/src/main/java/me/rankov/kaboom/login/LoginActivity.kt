@@ -2,12 +2,12 @@ package me.rankov.kaboom.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.MusicService
@@ -58,7 +58,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        signInButton.setOnClickListener { presenter.onSignIn() }
+        signInButton.setOnClickListener {
+            presenter.onAmazonSignIn(this)
+        }
         signOutButton.setOnClickListener { presenter.onSignOut() }
         navController = findNavController(R.id.login_host_fragment)
         backgroundMusic = Intent(this, MusicService::class.java)
@@ -80,18 +82,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         startActivityForResult(signInIntent, requestCode)
     }
 
+    override fun updateUI(signedIn: Boolean) {
+        signInButton.visibility = if (signedIn) GONE else VISIBLE
+        signOutButton.visibility = if (signedIn) VISIBLE else GONE
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         presenter.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            signInButton.visibility = View.GONE
-            signOutButton.visibility = View.VISIBLE
-        } else {
-            signInButton.visibility = View.VISIBLE
-            signOutButton.visibility = View.GONE
-        }
     }
 }

@@ -15,6 +15,7 @@ class CountriesListPresenterImpl(var countriesListView: View?,
         countriesListView?.showProgress()
         loadCountriesInteractor.loadActionItems(::onActionItemsLoaded)
         loadCountriesInteractor.loadCountries(::onCountriesLoaded)
+        loadCountriesInteractor.logAmazonTokens()
     }
 
     private fun onActionItemsLoaded(list: List<ActionItem>) {

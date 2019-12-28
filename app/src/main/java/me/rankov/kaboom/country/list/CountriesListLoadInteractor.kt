@@ -1,5 +1,8 @@
 package me.rankov.kaboom.country.list
 
+import android.util.Log
+import com.amazonaws.mobile.client.AWSMobileClient
+import me.rankov.kaboom.App
 import me.rankov.kaboom.BaseInteractor
 import me.rankov.kaboom.country.ActionItem
 import me.rankov.kaboom.country.Country
@@ -50,5 +53,16 @@ class CountriesListLoadInteractor : BaseInteractor("https://restcountries.eu") {
                 response.body()?.let { callback(it) }
             }
         })
+    }
+
+    fun logAmazonTokens() {
+        try {
+            val accessToken = AWSMobileClient.getInstance().tokens.accessToken.tokenString
+            val idToken = AWSMobileClient.getInstance().tokens.idToken.tokenString
+            Log.d(App.TAG, "AWS access token: $accessToken")
+            Log.d(App.TAG, "AWS id token: $idToken")
+        } catch (e: Exception) {
+            Log.e(App.TAG, "", e)
+        }
     }
 }
