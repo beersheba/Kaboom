@@ -20,7 +20,7 @@ class LoginInteractor {
 
     interface OnLoginListener {
         fun onSuccess(user: FirebaseUser?)
-        fun onSuccess()
+        fun onSignedIn()
         fun onFail()
         fun onSignedOut()
     }
@@ -135,7 +135,6 @@ class LoginInteractor {
                 } catch (e: Exception) {
                     Log.e(App.TAG, "", e)
                 }
-                listener.onSuccess()
             }
 
             override fun onError(e: Exception?) {
@@ -162,7 +161,10 @@ class LoginInteractor {
                     Log.i("userState", "user is signed out")
                     listener.onSignedOut()
                 }
-                UserState.SIGNED_IN -> Log.i("userState", "user is signed in")
+                UserState.SIGNED_IN -> {
+                    Log.i("userState", "user is signed in")
+                    listener.onSignedIn()
+                }
                 UserState.SIGNED_OUT_USER_POOLS_TOKENS_INVALID -> {
                     Log.i("userState", "need to login again")
                     listener.onSignedOut()

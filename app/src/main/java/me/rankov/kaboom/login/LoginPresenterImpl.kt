@@ -21,7 +21,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         checkRegistration(user)
     }
 
-    override fun onSuccess() {
+    override fun onSignedIn() {
         loginView?.updateUI(true)
         loginView?.navigateToList()
     }
