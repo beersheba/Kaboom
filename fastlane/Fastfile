@@ -19,6 +19,11 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
+    increment_version_code(
+            gradle_file_path: "project/build.gradle",
+            #ext_constant_name: "test"
+            #app_folder_name:"app"
+      )
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
