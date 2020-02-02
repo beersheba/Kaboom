@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.list.CountriesListActivity
-import me.rankov.kaboom.prefs
 
 class LoginNameFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -24,12 +22,12 @@ class LoginNameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById(R.id.button_next) as Button
         val editName = view.findViewById(R.id.edit_name) as EditText
-        val user = arguments?.get("user") as FirebaseUser
-        val initName = user.email?.substringBefore("@") as String
-        editName.setText(initName)
+//        val user = arguments?.get("user")
+//        val initName = user.email?.substringBefore("@") as String
+//        editName.setText(initName)
 
         button.setOnClickListener {
-            prefs.nickname = initName
+//            prefs.nickname = initName
 //            findNavController().navigate(R.id.actionNameToCountry)
             var intent = Intent(context, CountriesListActivity::class.java)
             startActivity(intent)

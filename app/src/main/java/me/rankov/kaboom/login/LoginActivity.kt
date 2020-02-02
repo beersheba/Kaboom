@@ -11,7 +11,6 @@ import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.MusicService
 import me.rankov.kaboom.R
 import me.rankov.kaboom.country.list.CountriesListActivity
-import me.rankov.kaboom.map.MapActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
@@ -25,7 +24,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         signInButton.setOnClickListener {
-            presenter.onAmazonSignIn(this)
+            presenter.onSignIn(this)
         }
         navController = findNavController(R.id.login_host_fragment)
         backgroundMusic = Intent(this, MusicService::class.java)
@@ -33,23 +32,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         presenter.onCreate()
     }
 
-    override fun onStart() {
-        super.onStart()
-        presenter.onStart()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
-    }
-
-    override fun signIn(signInIntent: Intent, requestCode: Int) {
-        startActivityForResult(signInIntent, requestCode)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        presenter.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun setBackground() {
@@ -77,10 +62,5 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         navController.navigate(R.id.loginHomeFragment, null,
                 NavOptions.Builder().setPopUpTo(R.id.login_nav, true).build()
         )
-    }
-
-    override fun navigateToMap() {
-        val intent = Intent(this, MapActivity::class.java)
-        startActivity(intent)
     }
 }
