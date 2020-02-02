@@ -9,7 +9,6 @@ import me.rankov.kaboom.BaseView
 interface LoginContract {
     interface View: BaseView {
         fun signIn(signInIntent: Intent, requestCode: Int)
-        fun updateUI(signedIn: Boolean)
         fun navigateToMap()
         fun navigateToList()
         fun navigateToName(bundle: Bundle)

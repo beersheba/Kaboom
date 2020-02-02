@@ -56,13 +56,9 @@ class CountriesListLoadInteractor : BaseInteractor("https://restcountries.eu") {
     }
 
     fun logAmazonTokens() {
-        try {
-            val accessToken = AWSMobileClient.getInstance().tokens.accessToken.tokenString
-            val idToken = AWSMobileClient.getInstance().tokens.idToken.tokenString
-            Log.d(App.TAG, "AWS access token: $accessToken")
-            Log.d(App.TAG, "AWS id token: $idToken")
-        } catch (e: Exception) {
-            Log.e(App.TAG, "", e)
-        }
+        val accessToken = AWSMobileClient.getInstance().tokens.accessToken.tokenString
+        val idToken = AWSMobileClient.getInstance().tokens.idToken.tokenString
+        Log.d(App.TAG, "AWS access token: $accessToken")
+        Log.d(App.TAG, "AWS id token: $idToken")
     }
 }

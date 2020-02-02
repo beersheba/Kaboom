@@ -1,6 +1,8 @@
 package me.rankov.kaboom.country.list
 
 import android.widget.ImageView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import me.rankov.kaboom.country.ActionItem
 import me.rankov.kaboom.country.Country
 import me.rankov.kaboom.country.details.ActionItems
@@ -15,7 +17,9 @@ class CountriesListPresenterImpl(var countriesListView: View?,
         countriesListView?.showProgress()
         loadCountriesInteractor.loadActionItems(::onActionItemsLoaded)
         loadCountriesInteractor.loadCountries(::onCountriesLoaded)
-        loadCountriesInteractor.logAmazonTokens()
+        GlobalScope.launch {
+            loadCountriesInteractor.logAmazonTokens()
+        }
     }
 
     private fun onActionItemsLoaded(list: List<ActionItem>) {

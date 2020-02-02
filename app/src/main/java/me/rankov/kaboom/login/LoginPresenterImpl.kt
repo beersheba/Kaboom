@@ -3,7 +3,6 @@ package me.rankov.kaboom.login
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
-import com.amazonaws.mobile.client.AWSMobileClient
 import com.google.firebase.auth.FirebaseUser
 import me.rankov.kaboom.App
 import org.jetbrains.anko.bundleOf
@@ -12,22 +11,18 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         LoginContract.Presenter, LoginInteractor.OnLoginListener {
 
     override fun onSignedOut() {
-        loginView?.updateUI(false)
         loginView?.navigateToHome()
     }
 
     override fun onSuccess(user: FirebaseUser?) {
-        loginView?.updateUI(true)
         checkRegistration(user)
     }
 
     override fun onSignedIn() {
-        loginView?.updateUI(true)
         loginView?.navigateToList()
     }
 
     override fun onFail() {
-        loginView?.updateUI(false)
     }
 
     override fun onCreate() {
@@ -40,17 +35,7 @@ class LoginPresenterImpl(var loginView: LoginContract.View?, val loginInteractor
         loginInteractor.signIn(requestCode, data, this)
     }
 
-    override fun onStart() {
-        val currentUser = loginInteractor.getUser()
-        val userSignedIn = AWSMobileClient.getInstance().isSignedIn
-        loginView?.updateUI(userSignedIn)
-        if (currentUser != null) {
-            checkRegistration(currentUser)
-        }
-        if (userSignedIn) {
-            loginView?.navigateToList()
-        }
-    }
+    override fun onStart() {}
 
     private fun checkRegistration(user: FirebaseUser?) {
         val nickname = loginInteractor.getNickname()
