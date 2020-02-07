@@ -3,6 +3,7 @@ package me.rankov.kaboom.country.list
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ import me.rankov.kaboom.country.CountryDetailsActivity
 import org.jetbrains.anko.toast
 
 class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
+
     override fun setBackground() {
         GlideApp.with(this).load(R.drawable.earth).centerCrop().into(list_background)
     }
@@ -68,9 +70,23 @@ class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.sign_out -> {
+                signOut()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun signOut() {
+        presenter.onSignOut()
+    }
+
     override fun onDestroy() {
+        presenter.detachView()
         super.onDestroy()
-        presenter.onDestroy()
     }
 
     override fun onBackPressed() {

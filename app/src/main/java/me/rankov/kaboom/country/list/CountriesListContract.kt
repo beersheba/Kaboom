@@ -17,5 +17,6 @@ interface CountriesListContract {
     interface Presenter: BasePresenter {
         fun onCountriesLoaded(countries: List<Country>)
         fun onCountryClicked(country: Country, imageView: ImageView)
+        fun onSignOut()
     }
 }

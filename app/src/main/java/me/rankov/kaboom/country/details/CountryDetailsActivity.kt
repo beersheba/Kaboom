@@ -125,8 +125,8 @@ class CountryDetailsActivity : AppCompatActivity(), View {
     }
 
     override fun onDestroy() {
+        presenter.detachView()
         super.onDestroy()
-        presenter.onDestroy()
     }
 
 }

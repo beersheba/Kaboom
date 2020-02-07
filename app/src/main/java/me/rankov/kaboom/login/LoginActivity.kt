@@ -2,6 +2,7 @@ package me.rankov.kaboom.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -33,8 +34,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun onDestroy() {
+        presenter.detachView()
         super.onDestroy()
-        presenter.onDestroy()
     }
 
     override fun setBackground() {
@@ -62,5 +63,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         navController.navigate(R.id.loginHomeFragment, null,
                 NavOptions.Builder().setPopUpTo(R.id.login_nav, true).build()
         )
+    }
+
+    override fun disableSignInUI() {
+        signInButton.visibility = View.INVISIBLE
+    }
+
+    override fun enableSignInUI() {
+        signInButton.visibility = View.VISIBLE
     }
 }

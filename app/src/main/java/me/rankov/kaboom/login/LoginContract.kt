@@ -11,6 +11,8 @@ interface LoginContract {
         fun navigateToName(bundle: Bundle)
         fun navigateToCountry()
         fun navigateToHome()
+        fun disableSignInUI()
+        fun enableSignInUI()
     }
 
     interface Presenter : BasePresenter {

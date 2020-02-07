@@ -37,7 +37,7 @@ class CountryDetailsPresenterImpl(var countryView: View?,
         countryView?.showAction(baseUrl.plus(actionImage))
     }
 
-    override fun onDestroy() {
+    override fun detachView() {
         countryView = null
     }
 }

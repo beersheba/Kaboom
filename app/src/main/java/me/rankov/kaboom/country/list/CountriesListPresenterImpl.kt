@@ -40,7 +40,10 @@ class CountriesListPresenterImpl(var countriesListView: View?,
         countriesListView?.navigateToCountry(country, imageView)
     }
 
-    override fun onDestroy() {
+    override fun onSignOut() {
+    }
+
+    override fun detachView() {
         countriesListView = null
     }
 }

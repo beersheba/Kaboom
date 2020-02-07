@@ -47,5 +47,4 @@
             android:name=".MusicService"
             android:enabled="true" />
     </application>
-
 </manifest>
