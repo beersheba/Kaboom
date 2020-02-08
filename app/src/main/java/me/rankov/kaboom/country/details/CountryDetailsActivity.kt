@@ -1,11 +1,15 @@
 package me.rankov.kaboom.country
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -27,12 +31,48 @@ import java.text.NumberFormat
 
 
 class CountryDetailsActivity : AppCompatActivity(), View {
-    override fun setBackground() {
-        GlideApp.with(this).load(R.drawable.earth).centerCrop().into(details_background)
-    }
 
     private lateinit var country: Country
     private lateinit var presenter: CountryDetailsPresenterImpl
+
+    companion object {
+        fun start(context: Activity, country: Country, imageView: ImageView) {
+            val intent = Intent(context, CountryDetailsActivity::class.java)
+            intent.apply {
+                putExtra(EXTRA_COUNTRY, country)
+                putExtra(EXTRA_COUNTRY_TRANSITION_NAME, ViewCompat.getTransitionName(imageView))
+            }
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    context, imageView, ViewCompat.getTransitionName(imageView).toString())
+            context.startActivity(intent, options.toBundle())
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_country_details)
+        setSupportActionBar(toolbar)
+        title = getString(R.string.country_title)
+        country = intent.getParcelableExtra(EXTRA_COUNTRY)
+        presenter = CountryDetailsPresenterImpl(this, CountryDetailsInteractor(), country)
+        presenter.onCreate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        action_view.visibility = android.view.View.INVISIBLE
+        enableProgress(false)
+    }
+
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
+    }
+
+    override fun setBackground() {
+        GlideApp.with(this).load(R.drawable.earth).centerCrop().into(details_background)
+    }
 
     override fun setCountry(country: Country) {
         supportPostponeEnterTransition()
@@ -107,27 +147,6 @@ class CountryDetailsActivity : AppCompatActivity(), View {
             presenter.onItemSelected(i, country, attack)
             enableProgress(true)
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_country_details)
-        setSupportActionBar(toolbar)
-        title = getString(R.string.country_title)
-        country = intent.getParcelableExtra(EXTRA_COUNTRY)
-        presenter = CountryDetailsPresenterImpl(this, CountryDetailsInteractor(), country)
-        presenter.onCreate()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        action_view.visibility = android.view.View.INVISIBLE
-        enableProgress(false)
-    }
-
-    override fun onDestroy() {
-        presenter.detachView()
-        super.onDestroy()
     }
 
 }
