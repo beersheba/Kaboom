@@ -19,18 +19,21 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
-    increment_version_code(
-            gradle_file_path: "project/build.gradle",
-            #ext_constant_name: "test"
-            #app_folder_name:"app"
-      )
+
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Submit a new Beta Build to Firebase App Distribution"
   lane :beta do
+    increment_version_name(app_project_dir: '**/app', bump_type: 'patch')
+    increment_version_code(app_project_dir: '**/app')
     gradle(task: "clean assembleRelease")
-    crashlytics
-  
+    firebase_app_distribution(
+       app: “1:136505228760:android:4c23bca2ca5f9c6d”,
+       groups: “men-of-war”,
+       release_notes: “Bugfix and optimization”,
+     )
+
+    #crashlytics
     # sh "your_script.sh"
     # You can also use other beta testing services here
   end
