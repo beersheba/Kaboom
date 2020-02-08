@@ -2,7 +2,7 @@ package me.rankov.kaboom.country.details
 
 import me.rankov.kaboom.BasePresenter
 import me.rankov.kaboom.BaseView
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 
 interface CountryDetailsContract {
     interface View : BaseView {

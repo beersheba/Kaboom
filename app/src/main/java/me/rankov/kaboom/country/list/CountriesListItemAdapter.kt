@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.view_country_item.view.*
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 
 
 class CountriesListItemAdapter(private val context: Context,

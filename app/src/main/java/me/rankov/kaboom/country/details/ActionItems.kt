@@ -1,6 +1,6 @@
 package me.rankov.kaboom.country.details
 
-import me.rankov.kaboom.country.ActionItem
+import me.rankov.kaboom.model.ActionItem
 
 object ActionItems {
     private val all = mutableListOf<ActionItem>()

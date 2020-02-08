@@ -20,6 +20,7 @@ import me.rankov.kaboom.R
 import me.rankov.kaboom.country.details.CountryDetailsContract.View
 import me.rankov.kaboom.country.details.CountryDetailsInteractor
 import me.rankov.kaboom.country.details.CountryDetailsPresenterImpl
+import me.rankov.kaboom.model.Country
 import me.rankov.kaboom.stats.StatsActivity
 import org.jetbrains.anko.selector
 import java.text.NumberFormat

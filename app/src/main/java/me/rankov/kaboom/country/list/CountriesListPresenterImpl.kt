@@ -3,8 +3,8 @@ package me.rankov.kaboom.country.list
 import android.widget.ImageView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import me.rankov.kaboom.country.ActionItem
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.ActionItem
+import me.rankov.kaboom.model.Country
 import me.rankov.kaboom.country.details.ActionItems
 import me.rankov.kaboom.country.list.CountriesListContract.Presenter
 import me.rankov.kaboom.country.list.CountriesListContract.View

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mousebird.maply.*
 import me.rankov.kaboom.EXTRA_COUNTRY
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 import java.io.File
 import java.util.*
 

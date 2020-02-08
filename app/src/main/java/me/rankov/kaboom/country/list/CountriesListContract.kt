@@ -3,7 +3,7 @@ package me.rankov.kaboom.country.list
 import android.widget.ImageView
 import me.rankov.kaboom.BasePresenter
 import me.rankov.kaboom.BaseView
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 
 interface CountriesListContract {
     interface View: BaseView {

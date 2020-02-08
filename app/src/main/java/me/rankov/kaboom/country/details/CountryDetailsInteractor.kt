@@ -1,7 +1,7 @@
 package me.rankov.kaboom.country.details
 
 import me.rankov.kaboom.BaseInteractor
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback

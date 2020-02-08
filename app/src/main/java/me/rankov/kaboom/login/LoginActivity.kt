@@ -1,5 +1,6 @@
 package me.rankov.kaboom.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -20,6 +21,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     private lateinit var navController: NavController
 
     private lateinit var backgroundMusic: Intent
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, LoginActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

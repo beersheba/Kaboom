@@ -1,6 +1,6 @@
 package me.rankov.kaboom.country.details
 
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.Country
 import me.rankov.kaboom.country.details.CountryDetailsContract.Presenter
 import me.rankov.kaboom.country.details.CountryDetailsContract.View
 

@@ -1,5 +1,6 @@
 package me.rankov.kaboom.country.list
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -14,11 +15,18 @@ import me.rankov.kaboom.EXTRA_COUNTRY
 import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country.Country
 import me.rankov.kaboom.country.CountryDetailsActivity
+import me.rankov.kaboom.model.Country
 import org.jetbrains.anko.toast
 
 class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, CountriesListActivity::class.java)
+            context.startActivity(intent)
+        }
+    }
 
     override fun setBackground() {
         GlideApp.with(this).load(R.drawable.earth).centerCrop().into(list_background)

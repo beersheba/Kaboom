@@ -4,8 +4,8 @@ import android.util.Log
 import com.amazonaws.mobile.client.AWSMobileClient
 import me.rankov.kaboom.App
 import me.rankov.kaboom.BaseInteractor
-import me.rankov.kaboom.country.ActionItem
-import me.rankov.kaboom.country.Country
+import me.rankov.kaboom.model.ActionItem
+import me.rankov.kaboom.model.Country
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

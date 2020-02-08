@@ -1,4 +1,4 @@
-package me.rankov.kaboom.country
+package me.rankov.kaboom.model
 
 data class ActionItem(val name: String,
                       val polarity: String,
