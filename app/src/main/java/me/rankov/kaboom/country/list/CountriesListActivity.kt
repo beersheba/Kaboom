@@ -8,18 +8,23 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.view.ViewCompat
 import kotlinx.android.synthetic.main.activity_countries_list.*
-import me.rankov.kaboom.EXTRA_COUNTRY
-import me.rankov.kaboom.EXTRA_COUNTRY_TRANSITION_NAME
 import me.rankov.kaboom.GlideApp
 import me.rankov.kaboom.R
-import me.rankov.kaboom.country.CountryDetailsActivity
+import me.rankov.kaboom.ScreenNavigator
+import me.rankov.kaboom.di.ActivityModule
+import me.rankov.kaboom.di.DaggerActivityComponent
 import me.rankov.kaboom.model.Country
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
+
+    @Inject lateinit var screenNavigator: ScreenNavigator
+
+    init {
+        DaggerActivityComponent.builder().activityModule(ActivityModule(this)).build().inject(this)
+    }
 
     companion object {
         fun start(context: Context) {
@@ -89,14 +94,10 @@ class CountriesListActivity : AppCompatActivity(), CountriesListContract.View {
     }
 
     override fun navigateToCountry(country: Country, imageView: ImageView) {
-        val intent = Intent(this, CountryDetailsActivity::class.java)
-        intent.apply {
-            putExtra(EXTRA_COUNTRY, country)
-            putExtra(EXTRA_COUNTRY_TRANSITION_NAME, ViewCompat.getTransitionName(imageView))
-        }
+        screenNavigator.toCountryDetailsScreen(country, imageView)
+    }
 
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this, imageView, ViewCompat.getTransitionName(imageView).toString())
-        startActivity(intent, options.toBundle())
+    override fun navigateToHome() {
+        screenNavigator.toLoginScreen()
     }
 }

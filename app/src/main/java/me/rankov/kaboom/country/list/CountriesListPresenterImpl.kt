@@ -1,13 +1,16 @@
 package me.rankov.kaboom.country.list
 
 import android.widget.ImageView
+import com.amazonaws.mobile.auth.core.IdentityManager
+import com.amazonaws.mobile.auth.core.SignInStateChangeListener
+import com.amazonaws.mobile.client.AWSMobileClient
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import me.rankov.kaboom.model.ActionItem
-import me.rankov.kaboom.model.Country
 import me.rankov.kaboom.country.details.ActionItems
 import me.rankov.kaboom.country.list.CountriesListContract.Presenter
 import me.rankov.kaboom.country.list.CountriesListContract.View
+import me.rankov.kaboom.model.ActionItem
+import me.rankov.kaboom.model.Country
 
 class CountriesListPresenterImpl(var countriesListView: View?,
                                  val loadCountriesInteractor: CountriesListLoadInteractor) : Presenter {
@@ -20,6 +23,17 @@ class CountriesListPresenterImpl(var countriesListView: View?,
         GlobalScope.launch {
             loadCountriesInteractor.logAmazonTokens()
         }
+
+        IdentityManager.getDefaultIdentityManager().addSignInStateChangeListener(
+                object : SignInStateChangeListener {
+                    override fun onUserSignedIn() {
+                    }
+
+                    override fun onUserSignedOut() {
+                        countriesListView?.navigateToHome()
+                    }
+                }
+        )
     }
 
     private fun onActionItemsLoaded(list: List<ActionItem>) {
@@ -41,6 +55,7 @@ class CountriesListPresenterImpl(var countriesListView: View?,
     }
 
     override fun onSignOut() {
+        AWSMobileClient.getInstance().signOut()
     }
 
     override fun detachView() {

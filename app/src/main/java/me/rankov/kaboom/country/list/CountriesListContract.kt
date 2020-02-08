@@ -12,6 +12,7 @@ interface CountriesListContract {
         fun setCountries(countries: List<Country>)
         fun showMessage(message: String)
         fun navigateToCountry(country: Country, imageView: ImageView)
+        fun navigateToHome()
     }
 
     interface Presenter: BasePresenter {
